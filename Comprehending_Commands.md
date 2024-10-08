@@ -207,23 +207,23 @@ Each clue directed to a new location. Some files were hidden (dot-prepended), re
 The task was to create a directory `/tmp/pwn`, add a file called `college` in it, and then run `/challenge/run` to check the solution.
 
 1. **Navigating to `/tmp`**:
-   ```bash
+   ```
    cd /tmp
    ```
 
 2. **Creating the Directory**:
-   ```bash
+   ```
    mkdir pwn
    ```
 
 3. **Adding the `college` File**:
-   ```bash
+   ```
    cd pwn
    touch college
    ```
 
 4. **Running the Check**:
-   ```bash
+   ```
    /challenge/run
    ```
    This produced the flag:  
@@ -234,5 +234,46 @@ The task was to create a directory `/tmp/pwn`, add a file called `college` in it
 
 ## finding files
 
+   I initiated a search for the file named `flag` across the entire filesystem:
+   ```
+   find / -name flag
+   ```
+   During the search, I encountered several "Permission denied" messages, which I ignored as instructed. 
+
+   The search returned several results. I examined the first few candidates:
+   ```
+   /usr/local/lib/python3.8/dist-packages/pwnlib/flag
+   /usr/local/share/radare2/5.9.5/flag
+   /usr/lib/python3/dist-packages/babel/localtime/__pycache__/flag
+   ```
+
+   After checking multiple directories, I found the correct flag:
+   ```
+   cat /usr/lib/python3/dist-packages/babel/localtime/__pycache__/flag
+   ```
+   This returned:
+   ```
+   pwn.college{EdPlBdEeH_sM8q9y72TRmIRzFvd.dJzM4QDLwQDN1czW}
+   ```
+
+![image](https://github.com/user-attachments/assets/cd4bb160-2065-40c1-b602-80dc47e39f4b)
+![image](https://github.com/user-attachments/assets/f7fe46cc-6050-4f9a-a278-d8e13a49b2c4)
+
 
 ## linking files
+
+   I used the `ln -s` command to create a symlink from `/flag` to `/home/hacker/not-the-flag`:
+   ```
+   ln -s /flag /home/hacker/not-the-flag
+   ```
+
+   I then executed the command to read the contents of the symbolic link:
+   ```
+   /challenge/catflag
+   ```
+   This returned:
+   ```
+   pwn.college{gZ9egy0-gIk-V97ULVfnyz2_dTI.dlTM1UDLwQDN1czW}
+   ```
+
+![image](https://github.com/user-attachments/assets/3f738862-8f6d-47fe-845a-962428d8265e)
