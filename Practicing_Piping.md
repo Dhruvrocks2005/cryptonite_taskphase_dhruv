@@ -181,13 +181,78 @@ pwn.college{0tClRfKd1xd0ijF6su6rhLhspAv.dVDM5QDLwQDN1czW}
 
 ## Duplicating piped data with tee
 
+In this challenge, the goal was to use the `tee` command to intercept data flowing from the `/challenge/pwn` command to the `/challenge/college` command. This was necessary to discover the secret code required for successful execution.
+
+   - The command was set up to pipe the output from `/challenge/pwn` into `tee`, which duplicated the output to a file named `output` and also allowed it to continue to `/challenge/college`.
+   - The command executed was:
+     ```
+     /challenge/pwn | tee output | /challenge/college
+     ```
+     
+   - When the above command was run, it provided a warning indicating that the output was being overwritten. However, the key output from `/challenge/pwn` needed to be examined to determine the secret code.
+
+   - After inspecting the contents of `output`, the correct secret code was identified. The command was then re-executed with the appropriate secret code:
+     ```
+     /challenge/pwn --secret "k49M9h6W" | /challenge/college
+     ```
+
+ Flag:
+```
+pwn.college{k49M9h6Wlg6eHsAL9pvMKO0ExgM.dFjM5QDLwQDN1czW}
+```
+
 ![image](https://github.com/user-attachments/assets/1daf2c8a-0446-4572-b160-eb0575328396)
 
 ## Writing to multiple programs
 
+In this challenge, the objective was to duplicate the output from the `/challenge/hack` command simultaneously into the inputs of two other commands: `/challenge/the` and `/challenge/planet`. This was achieved using the `tee` command alongside process substitution.
+
+   - The `>(command)` syntax creates a named pipe that connects the standard output of the specified command to the standard input of another command. In this case, it allows the output from `/challenge/hack` to be piped into both `/challenge/the` and `/challenge/planet`.
+
+   - The command executed was:
+     ```
+     /challenge/hack | tee >(/challenge/the) >(/challenge/planet)
+     ```
+
+   - The `/challenge/hack` command produced output that was read by `tee`, which then sent the output to both `/challenge/the` and `/challenge/planet` through the named pipes created by the process substitution.
+
+- The challenge was successfully completed, with the output from `/challenge/hack` duplicated and sent to both commands as required.
+
+Flag:
+```
+pwn.college{UsW8XA2jKahuuoqJzWqi5_wqnuP.dBDO0UDLwQDN1czW}
+```
+
 ![image](https://github.com/user-attachments/assets/2f92ae64-2c3f-41f3-88d9-98c126d39c0c)
 
 ## Split-piping stderr and stdout
+Here's the Markdown report for the challenge involving redirecting stdout to one program and stderr to another:
+
+---
+
+### Challenge: Redirecting Stdout and Stderr to Different Programs
+
+In this challenge, the objective was to redirect the standard output (stdout) of the `/challenge/hack` command to the `/challenge/planet` program and the standard error (stderr) to the `/challenge/the` program without mixing the two streams.
+
+   - The command executed was:
+     ```
+     /challenge/hack 2> >( /challenge/the ) > >( /challenge/planet )
+     ```
+
+     - `2>` redirects the stderr of `/challenge/hack` to a process substitution that points to `/challenge/the`.
+       
+     - `>` redirects the stdout of `/challenge/hack` to another process substitution that points to `/challenge/planet`.
+
+   - By using `>(...)`, the output streams were directed to their respective programs without mixing stdout and stderr.
+
+
+- The challenge was successfully completed, with stdout directed to `/challenge/planet` and stderr directed to `/challenge/the` as required.
+
+Flag:
+```
+pwn.college{cmpRSCKwKU6Cl8I65OKKO9ucGYj.dFDNwYDLwQDN1czW}
+```
+
 
 ![image](https://github.com/user-attachments/assets/b7213bc8-d627-49bd-8e47-1dfa94f430bc)
 
