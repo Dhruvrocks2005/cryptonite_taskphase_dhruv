@@ -143,14 +143,44 @@ pwn.college{Aa5F5hqWKXcBvDZeZgBgpjHlnI2.dhTM4QDLwQDN1czW}
 
 ![image](https://github.com/user-attachments/assets/76e8d44a-55b0-491e-b14f-81e358d9acbb)
 
-
 ## Grepping live output
 
+In this challenge, the objective was to use the pipe (`|`) operator to connect the output of the `/challenge/run` command directly into the `grep` command without needing to store the output in a file.
+
+   - I executed the `/challenge/run` command and piped its output directly to `grep`, which searched for the string indicating the flag:
+     ```
+     /challenge/run | grep pwn.college
+     ```
+
+   - The command successfully filtered the output in real-time, displaying the line containing the flag.
+
+ Flag:
+```
+pwn.college{AbvPGdJ3Kg9V757sOIi7kbzqZfi.dlTM4QDLwQDN1czW}
+```
+
+![image](https://github.com/user-attachments/assets/b89e67db-ddc6-40be-b022-dad78d097b2c)
 
 ## Grepping errors
 
+In this challenge, the objective was to filter the standard error output of the `/challenge/run` command using `grep`. Since standard error (fd 2) cannot be directly piped to another command, we used a two-step redirection process.
+
+   - I used the `2>&1` operator to redirect standard error to standard output, allowing both outputs to be combined:
+     ```
+     /challenge/run 2>&1 | grep pwn.college
+     ```
+
+   - The combined output from both standard output and standard error was then piped into `grep`, which searched for the string indicating the flag.
+
+ Flag:
+```
+pwn.college{0tClRfKd1xd0ijF6su6rhLhspAv.dVDM5QDLwQDN1czW}
+```
+
+![image](https://github.com/user-attachments/assets/d3f6de30-440f-47c2-9293-f4ed4405ce71)
 
 ## Duplicating piped data with tee
+![image](https://github.com/user-attachments/assets/1daf2c8a-0446-4572-b160-eb0575328396)
 
 
 ## Writing to multiple programs
