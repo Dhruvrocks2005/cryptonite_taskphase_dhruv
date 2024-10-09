@@ -101,7 +101,48 @@ Fifth Module
 
 
 ## Mixing globs
+The objective was to match the files `challenging`, `educational`, and `pwning` in `/challenge/files` using a short (6 characters or less) glob.
 
+1. Navigated to the directory and listed files:
+   ```
+   cd /challenge/files
+   ls
+   ```
+2. Identified that the target files started with `c`, `e`, and `p`.
+3. Used the glob pattern `[cep]*` to match all three files:
+   ```
+   /challenge/run [cep]*
+   ```
+
+ Flag:
+```
+pwn.college{wNLT05uUSkWNf2PD4t65QK0VfJY.dVjM4QDLwQDN1czW}
+```
+
+
+
+![image](https://github.com/user-attachments/assets/fad219c1-9d38-449d-b385-f3402bfacb5d)
 
 ## Exclusionary globbing
+
+The task was to run a glob that matches all files except those starting with `p`, `w`, or `n` in `/challenge/files`.
+
+
+ **Forming the Glob**: 
+   - I used the pattern `[!pwn]*` to exclude files starting with `p`, `w`, or `n`.
+
+ **Executing the Command**:
+   ```
+   cd /challenge/files
+   /challenge/run [!pwn]*
+   ```
+
+Flag:
+```
+pwn.college{MhfdxpxPt5jIVWVs5buzWdaqV-y.dZjM4QDLwQDN1czW}
+```
+
+
+![image](https://github.com/user-attachments/assets/84cb04ac-f9a5-4aba-b8b7-d78504bb954a)
+
 
