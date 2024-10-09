@@ -156,3 +156,39 @@ I used the `-k` option with the `man` command to search for the challenge:
 
 
 ## Help for Builtins
+
+
+   I began by invoking the `help` command to display a list of all shell built-ins:
+   ```
+   help
+   ```
+
+   I specifically looked up the `challenge` built-in by passing it to the `help` command:
+   ```
+   help challenge
+   ```
+   The output provided the following information:
+   ```
+   challenge: challenge [--fortune] [--version] [--secret SECRET]
+       This builtin command will read you the flag, given the right arguments!
+
+       Options:
+         --fortune         display a fortune
+         --version         display the version
+         --secret VALUE    prints the flag, if VALUE is correct
+
+       You must be sure to provide the right value to --secret. That value is "gW11YlWp".
+   ```
+
+   With the secret value identified as `gW11YlWp`, I invoked the `challenge` command with the appropriate argument:
+   ```
+   challenge --secret gW11YlWp
+   ```
+   The command confirmed the correct usage and displayed the flag:
+   ```
+   Correct! Here is your flag!
+   pwn.college{gW11YlWpvdI7qrvB8iXWmn0xn3b.dRTM5QDLwQDN1czW}
+   ```
+
+![image](https://github.com/user-attachments/assets/65095811-5f72-4b10-a415-891156e3dcb8)
+
