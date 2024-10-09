@@ -226,11 +226,6 @@ pwn.college{UsW8XA2jKahuuoqJzWqi5_wqnuP.dBDO0UDLwQDN1czW}
 ![image](https://github.com/user-attachments/assets/2f92ae64-2c3f-41f3-88d9-98c126d39c0c)
 
 ## Split-piping stderr and stdout
-Here's the Markdown report for the challenge involving redirecting stdout to one program and stderr to another:
-
----
-
-### Challenge: Redirecting Stdout and Stderr to Different Programs
 
 In this challenge, the objective was to redirect the standard output (stdout) of the `/challenge/hack` command to the `/challenge/planet` program and the standard error (stderr) to the `/challenge/the` program without mixing the two streams.
 
