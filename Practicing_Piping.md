@@ -1,0 +1,160 @@
+# Practicing Piping
+
+Sixth Module
+
+## Redirecting output
+
+The objective was to redirect the output of the word "PWN" to a file named `COLLEGE`.
+
+   - I used the `echo` command to print "PWN" and redirected the output to the file `COLLEGE`:
+
+     ```
+     echo PWN > COLLEGE
+     ```
+     
+The output was successfully redirected, and the flag was obtained.
+
+ Flag:
+ 
+```
+pwn.college{I9VY6QIIqD6vZgL6nGnqqkynKD_.dRjN1QDLwQDN1czW}
+```
+
+![image](https://github.com/user-attachments/assets/cd789a51-8744-486d-bd66-8244a60258a7)
+
+## Redirecting more output
+
+The objective was to redirect the output of the `/challenge/run` command to a file named `myflag`.
+
+   - I ran the following command to redirect the output:
+     ```
+     /challenge/run > myflag
+     ```
+   - The terminal continued to display informational messages, but the flag was written to the `myflag` file.
+
+   - To check the contents of the file, I used the `cat` command:
+     ```
+     cat myflag
+     ```
+
+Flag:
+```
+pwn.college{Mr-Cgtkf1Y5vGNOjLge9PbjMbIq.dVjN1QDLwQDN1czW}
+```
+
+![image](https://github.com/user-attachments/assets/38de52df-94f9-4a62-a7bc-f5106f428ebf)
+
+## Appending output
+
+
+The first half of the flag would be written directly to `/home/hacker/the-flag`, and the second half would be written to stdout. I had to append the second half to the file, using the `>>` operator to avoid overwriting the first half.
+
+   - I used the append-mode redirection to ensure both halves of the flag were saved to the same file:
+     
+     ```
+     /challenge/run >> /home/hacker/the-flag
+     ```
+     
+   - I checked the contents of the file to confirm the full flag was saved:
+     
+     ```
+     cat /home/hacker/the-flag
+     ```
+     
+FLag:
+
+```
+pwn.college{Aox4AnIyyOk2GLdO9HjvpiO_ill.ddDM5QDLwQDN1czW}
+```
+
+![image](https://github.com/user-attachments/assets/a321ba7c-72c2-430e-8eed-652e61034369)
+
+## Redirecting errors
+
+The objective was to redirect the output of `/challenge/run` to `myflag` and the error messages (instructions) to a file named `instructions`.
+
+   - I ran the following command to redirect both outputs:
+     ```
+     /challenge/run > myflag 2> instructions
+     ```
+   - This command redirected standard output to `myflag` and standard error to `instructions`, ensuring nothing was printed to the terminal.
+
+   - To check the instructions, I used:
+     ```
+     cat instructions
+     ```
+   - To check the flag, I used:
+     ```
+     cat myflag
+     ```
+ Flag:
+```
+pwn.college{wm5SypPHFRBfBb_vLc825HRrf3N.ddjN1QDLwQDN1czW}
+```
+
+![image](https://github.com/user-attachments/assets/b606e58f-8e72-4709-a3ba-5b41412a8aa7)
+
+## Redirecting input
+
+
+### Challenge: Redirecting Input
+
+The objective was to redirect the contents of the `PWN` file, which should contain the value `COLLEGE`, to the `/challenge/run` command using input redirection.
+
+   - First, I created the `PWN` file containing the value `COLLEGE` using output redirection:
+     ```
+     echo COLLEGE > PWN
+     ```
+
+   - I then ran the `/challenge/run` command while redirecting input from the `PWN` file:
+     ```
+     /challenge/run < PWN
+     ```
+
+   - Upon successful execution, the command confirmed that it read the value `COLLEGE` from the file, and I received the flag.
+
+ Flag:
+```
+pwn.college{sKM5nJkxDXJGDMjfRj64zwT5r6s.dBzN1QDLwQDN1czW}
+```
+
+![image](https://github.com/user-attachments/assets/81490563-6a69-4996-b3c5-009eb70dd6db)
+
+## Grepping stored results
+
+The goal of this challenge was to redirect the output of the `/challenge/run` command to a file and then search for the flag within that file using `grep`.
+
+   - I executed the `/challenge/run` command and redirected its output to the file `/tmp/data.txt`. This command generates a large amount of text, containing the flag among the lines:
+     ```
+     /challenge/run > /tmp/data.txt
+     ```
+
+   - After confirming that the output was successfully redirected, I used the `grep` command to search for the specific string that indicated the flag:
+     ```
+     grep pwn.college /tmp/data.txt
+     ```
+
+   - The command successfully returned the line containing the flag.
+
+ Flag:
+```
+pwn.college{Aa5F5hqWKXcBvDZeZgBgpjHlnI2.dhTM4QDLwQDN1czW}
+```
+
+![image](https://github.com/user-attachments/assets/76e8d44a-55b0-491e-b14f-81e358d9acbb)
+
+
+## Grepping live output
+
+
+## Grepping errors
+
+
+## Duplicating piped data with tee
+
+
+## Writing to multiple programs
+
+
+## Split-piping stderr and stdout
+
