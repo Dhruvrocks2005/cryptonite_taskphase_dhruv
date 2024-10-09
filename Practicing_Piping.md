@@ -180,11 +180,14 @@ pwn.college{0tClRfKd1xd0ijF6su6rhLhspAv.dVDM5QDLwQDN1czW}
 ![image](https://github.com/user-attachments/assets/d3f6de30-440f-47c2-9293-f4ed4405ce71)
 
 ## Duplicating piped data with tee
-![image](https://github.com/user-attachments/assets/1daf2c8a-0446-4572-b160-eb0575328396)
 
+![image](https://github.com/user-attachments/assets/1daf2c8a-0446-4572-b160-eb0575328396)
 
 ## Writing to multiple programs
 
+![image](https://github.com/user-attachments/assets/2f92ae64-2c3f-41f3-88d9-98c126d39c0c)
 
 ## Split-piping stderr and stdout
+
+![image](https://github.com/user-attachments/assets/b7213bc8-d627-49bd-8e47-1dfa94f430bc)
 
