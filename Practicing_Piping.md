@@ -200,8 +200,7 @@ In this challenge, the goal was to use the `tee` command to intercept data flowi
 ```
 pwn.college{k49M9h6Wlg6eHsAL9pvMKO0ExgM.dFjM5QDLwQDN1czW}
 ```
-
-![image](https://github.com/user-attachments/assets/1daf2c8a-0446-4572-b160-eb0575328396)
+![image](https://github.com/user-attachments/assets/692f2fba-1821-4845-a384-7f8bfc6f9be2)
 
 ## Writing to multiple programs
 
