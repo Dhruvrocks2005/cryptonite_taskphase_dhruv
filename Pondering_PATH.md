@@ -97,3 +97,36 @@ pwn.college{wxdhRB3rEEAsW0QX_1Nw39HWQKX.dZzNyUDLwQDN1czW}
 
 ## Hijacking Commands
 
+In this challenge, the objective was to prevent the deletion of the flag by hijacking the `rm` command and replacing it with a custom script that reads the flag instead of removing it.
+
+   - I created a shell script named `rm` that would invoke the `cat` command to read the flag instead of deleting it.
+     
+   - I used the absolute path of the `cat` command because, after changing the `PATH`, I would not be able to call `cat` without specifying its full path.
+     
+     ```
+     echo /usr/bin/cat /flag > rm
+     ```
+     
+   - I made the script executable:
+     
+     ```
+     chmod u+x rm
+     ```
+   - I set the `PATH` variable to the directory where the custom `rm` script was located:
+     
+     ```
+     PATH="/home/hacker"
+     ```
+   - Finally, I executed the `/challenge/run` command, which attempted to call `rm`:
+     
+     ```
+     /challenge/run
+     ```
+
+Flag:
+```
+pwn.college{MddC4pSvxQ7bDb2mPK37vasq2RM.ddzNyUDLwQDN1czW}
+```
+
+![image](https://github.com/user-attachments/assets/099ac1d7-9e0e-49da-88e4-84e35db8ddc2)
+![image](https://github.com/user-attachments/assets/b443af1a-9f19-4198-bd43-5911b2093cbc)
