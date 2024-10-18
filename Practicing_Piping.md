@@ -61,7 +61,7 @@ The first half of the flag would be written directly to `/home/hacker/the-flag`,
      cat /home/hacker/the-flag
      ```
      
-FLag:
+Flag:
 
 ```
 pwn.college{Aox4AnIyyOk2GLdO9HjvpiO_ill.ddDM5QDLwQDN1czW}
@@ -95,9 +95,6 @@ pwn.college{wm5SypPHFRBfBb_vLc825HRrf3N.ddjN1QDLwQDN1czW}
 ![image](https://github.com/user-attachments/assets/b606e58f-8e72-4709-a3ba-5b41412a8aa7)
 
 ## Redirecting input
-
-
-### Challenge: Redirecting Input
 
 The objective was to redirect the contents of the `PWN` file, which should contain the value `COLLEGE`, to the `/challenge/run` command using input redirection.
 
