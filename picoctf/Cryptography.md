@@ -43,7 +43,9 @@ I briefly considered writing my own decryption script. However, I quickly switch
 
 **Flag:**
 
+```
 picoCTF{n33d_a_lArg3r_e_d0cd6eae}
+```
 
 **Resources used:**
 
