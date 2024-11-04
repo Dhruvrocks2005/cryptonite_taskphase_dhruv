@@ -28,7 +28,12 @@ I entered `N`, `e` and `c` in the RSA Decoder and found the flag.
 
 **Knowledge Gained:**
 
-I learned about the implications of using small public exponents in RSA encryption(small e attack).
+I learned about RSA encryption in further detail and explored its vulnerabilities- the implications of using small public exponents in RSA encryption(small e attack).
+
+**RSA Encryption: c = m<sup>e</sup> (mod n)**
+
+**RSA Decryption: m = c<sup>d</sup> (mod n)**
+
 
 Utility of online cryptographic tools for quickly testing and validating decryption methods without the need for extensive manual calculations.
 
