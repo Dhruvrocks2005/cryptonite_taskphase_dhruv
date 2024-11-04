@@ -24,5 +24,13 @@ Website: https://www.dcode.fr/rsa-cipher
 
 <br>
 
+Knowledge Gained:
+I learned about the implications of using small public exponents in RSA encryption(small e attack).
+
+Using Online Tools: This challenge reinforced the utility of online cryptographic tools for quickly testing and validating decryption methods without the need for extensive manual calculations.
+
+Incorrect Tangents
+I briefly considered writing my own decryption script. However, I quickly switched to the online tool after realizing the complexity and time required for implementing the algorithm from scratch.
+
 Flag:
 picoCTF{n33d_a_lArg3r_e_d0cd6eae}
