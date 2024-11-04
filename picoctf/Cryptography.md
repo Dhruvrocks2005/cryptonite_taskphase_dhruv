@@ -2,7 +2,7 @@
 
 ## miniRSA
 
-Given:
+**Given:**
 
 N: 29331922499794985782735976045591164936683059380558950386560160105740343201513369939006307531165922708949619162698623675349030430859547825708994708321803705309459438099340427770580064400911431856656901982789948285309956111848686906152664473350940486507451771223435835260168971210087470894448460745593956840586530527915802541450092946574694809584880896601317519794442862977471129319781313161842056501715040555964011899589002863730868679527184420789010551475067862907739054966183120621407246398518098981106431219207697870293412176440482900183550467375190239898455201170831410460483829448603477361305838743852756938687673
 
@@ -12,11 +12,13 @@ ciphertext (c): 2205316413931134031074603746928247799030155221252519872650080519
 
 <br>
 
-Approach: To decrypt the ciphertext, I used an online RSA decryption tool.
+**Approach:** 
+
+To decrypt the ciphertext, I used an online RSA decryption tool.
 
 I entered `N`, `e` and `c` in the RSA Decoder and found the flag.
 
-Website: https://www.dcode.fr/rsa-cipher
+**Website:** https://www.dcode.fr/rsa-cipher
 
 <br>
 
@@ -24,13 +26,24 @@ Website: https://www.dcode.fr/rsa-cipher
 
 <br>
 
-Knowledge Gained:
+**Knowledge Gained:**
+
 I learned about the implications of using small public exponents in RSA encryption(small e attack).
 
-Using Online Tools: This challenge reinforced the utility of online cryptographic tools for quickly testing and validating decryption methods without the need for extensive manual calculations.
+Utility of online cryptographic tools for quickly testing and validating decryption methods without the need for extensive manual calculations.
 
-Incorrect Tangents
+**Incorrect Tangents:**
+
 I briefly considered writing my own decryption script. However, I quickly switched to the online tool after realizing the complexity and time required for implementing the algorithm from scratch.
 
-Flag:
+**Flag:**
+
 picoCTF{n33d_a_lArg3r_e_d0cd6eae}
+
+**Resources used:**
+
+https://en.wikipedia.org/wiki/RSA_(cryptosystem)
+
+https://ctf101.org/cryptography/what-is-rsa/
+
+https://www.dcode.fr/rsa-cipher
