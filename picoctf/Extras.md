@@ -782,3 +782,27 @@ picoCTF{trust_but_verify_c6c8b911}
 **Knowledge Gained:**
 
 Usage of loops in the Linux shell
+
+# Web Exploitation
+
+## WebDecode
+
+**Approach: Inspected the page and then decoded the encoded flag hidden there**
+
+![image](https://github.com/user-attachments/assets/6552e059-c314-46e4-a3ab-25f6acadb724)
+
+**Encoded Flag:**
+
+```
+cGljb0NURnt3ZWJfc3VjYzNzc2Z1bGx5X2QzYzBkZWRfMDJjZGNiNTl9
+```
+
+The encoded string is in Base64 format. Decoding it reveals the flag.
+
+![image](https://github.com/user-attachments/assets/ce77c7f2-98ee-4eaf-8ec1-1c9ee08f6504)
+
+**Flag:**
+
+```
+picoCTF{web_succ3ssfully_d3c0ded_02cdcb59}
+```
