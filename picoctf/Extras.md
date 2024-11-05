@@ -81,6 +81,29 @@ Connection to titan.picoctf.net closed.
 picoCTF{s3cur3_c0nn3ct10n_45a48857}
 ```
 
+## what's a net cat?
+
+```
+Description
+Using netcat (nc) is going to be pretty important. Can you connect to jupiter.challenges.picoctf.org at port 25103 to get the flag?
+```
+- `nc` is the command for `netcat`, a tool that can read and write data across network connections.
+- `jupiter.challenges.picoctf.org` is the server’s domain.
+- `25103` is the port to connect to on that server.
+```
+root@DhruvsPC:~# nc jupiter.challenges.picoctf.org 25103
+You're on your way to becoming the net cat master
+picoCTF{nEtCat_Mast3ry_d0c64587}
+```
+
+**Flag:**
+
+```
+picoCTF{nEtCat_Mast3ry_d0c64587}
+```
+
+Recources: https://linux.die.net/man/1/nc
+
 ## Time Machine
 
 ```
