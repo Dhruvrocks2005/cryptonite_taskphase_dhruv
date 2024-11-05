@@ -967,3 +967,27 @@ picoCTF{caesar_d3cr9pt3d_78250afc}
 ```
 
 Tool used: https://cryptii.com/
+
+## Mod 26
+
+ROT13 is a simple substitution cipher that shifts each letter 13 positions in the alphabet. Applying ROT13 again on the encoded text will return the original text.
+
+**Encoded text:**
+
+```
+cvpbPGS{arkg_gvzr_V'yy_gel_2_ebhaqf_bs_ebg13_nSkgmDJE}
+```
+
+![image](https://github.com/user-attachments/assets/9b4d23a6-23c4-4fdb-8468-ec08090fb06d)
+
+**Decoded text:**
+
+```
+picoCTF{next_time_I'll_try_2_rounds_of_rot13_aFxtzQWR}
+```
+
+**Flag:**
+
+```
+picoCTF{next_time_I'll_try_2_rounds_of_rot13_aFxtzQWR}
+```
