@@ -1096,6 +1096,39 @@ picoCTF{web_succ3ssfully_d3c0ded_02cdcb59}
 picoCTF{pr3tty_c0d3_b99eb82e}
 ```
 
+## Insp3ct0r
+
+**Approach: I just inspected the page and found the flag divided into 3 parts, hidden in the `HTML`, `CSS`, `JS (JavaScript)`
+source codes of the webpage**
+
+![image](https://github.com/user-attachments/assets/e2440838-f980-482e-a90e-994fc10d38ae)
+
+`HTML`, `CSS`, `JS (JavaScript)`
+
+![image](https://github.com/user-attachments/assets/ccbc6d99-346f-4ff9-aae4-19bfd4c00bf3)
+
+```
+Html is neat. Anyways have 1/3 of the flag: picoCTF{tru3_d3 
+```
+
+![image](https://github.com/user-attachments/assets/1464dfa2-9f3b-42e7-98f3-d6117022907a)
+
+```
+You need CSS to make pretty pages. Here's part 2/3 of the flag: t3ct1ve_0r_ju5t
+```
+
+![image](https://github.com/user-attachments/assets/4c93905e-0f3c-4b18-b3a2-bedd17e1ce62)
+
+```
+Javascript sure is neat. Anyways part 3/3 of the flag: _lucky?832b0699}
+```
+
+**Flag:**
+
+```
+picoCTF{tru3_d3t3ct1ve_0r_ju5t_lucky?832b0699}
+```
+
 # Cryptography
 
 ## interencdec
