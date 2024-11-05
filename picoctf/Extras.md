@@ -283,12 +283,55 @@ root@DhruvsPC:~/Addadshashanammu/Addadshashanammu/Almurbalarammi/Ashalmimilkala/
 **Flag:**
 
 ```
- picoCTF{l3v3l_up!_t4k3_4_r35t!_d32e018c}
+picoCTF{l3v3l_up!_t4k3_4_r35t!_d32e018c}
 ```
 
 **Knowledge Gained:**
 
 Using tabcomplete in the Terminal 
+
+## strings it
+
+In this challenge, we were given a binary file that contains the flag. We needed to extract this flag by analyzing the strings in the file.
+
+**Approach:**
+
+I ran the `strings` command on the given file, redirecting the output to a file named `olaola`. This step captured all readable strings in the file.
+Finally, I used `grep` to search for the flag format, `picoCTF`, within `olaola`.
+
+```
+root@DhruvsPC:~# touch olaola
+root@DhruvsPC:~# strings strings > olaola
+root@DhruvsPC:~# grep 'picoCTF' olaola
+picoCTF{5tRIng5_1T_7f766a23}
+```
+
+**Flag:**
+
+```
+picoCTF{5tRIng5_1T_7f766a23}
+```
+
+**Knowledge Gained:**
+
+`strings` command extracts readable ASCII characters from binary files, which can reveal hidden information like flags.
+
+## First Grep
+
+We can grep the flag from the file using the default flag format, as intended, OR we could just use ctrl+f in the file (opened in a text editor)'
+
+```
+root@DhruvsPC:~# grep 'picoCTF' file
+picoCTF{grep_is_good_to_find_things_5af9d829}
+```
+
+![image](https://github.com/user-attachments/assets/69c98195-a398-4780-9f6c-cabca261557c)
+
+**Flag:**
+
+```
+picoCTF{grep_is_good_to_find_things_5af9d829}
+```
 
 # Binary Exploitation
 
@@ -1127,6 +1170,34 @@ Javascript sure is neat. Anyways part 3/3 of the flag: _lucky?832b0699}
 
 ```
 picoCTF{tru3_d3t3ct1ve_0r_ju5t_lucky?832b0699}
+```
+
+## where are the robots
+
+**Approach:** I knew about robots.txt from OASIS CTF so this was very straightforward
+
+**website link:** https://jupiter.challenges.picoctf.org/problem/60915/
+
+![image](https://github.com/user-attachments/assets/fed1aed0-115e-45b0-92bc-a3de892b4025)
+
+<br>
+
+**website link:** https://jupiter.challenges.picoctf.org/problem/60915/robots.txt
+
+![image](https://github.com/user-attachments/assets/67a163fa-5941-43b0-acc9-554f6a7b0264)
+
+<br>
+
+**website link:** https://jupiter.challenges.picoctf.org/problem/60915/8028f.html
+
+![image](https://github.com/user-attachments/assets/1bef6dbe-f027-406a-ab38-a16df7b46a2c)
+
+<br>
+
+**Flag:**
+
+```
+picoCTF{ca1cu1at1ng_Mach1n3s_8028f}
 ```
 
 # Cryptography
