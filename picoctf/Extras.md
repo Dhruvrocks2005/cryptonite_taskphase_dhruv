@@ -104,6 +104,24 @@ picoCTF{nEtCat_Mast3ry_d0c64587}
 
 Recources: https://linux.die.net/man/1/nc
 
+## Glitch Cat
+
+```
+root@DhruvsPC:~# nc saturn.picoctf.net 58943
+'picoCTF{gl17ch_m3_n07_' + chr(0x62) + chr(0x64) + chr(0x61) + chr(0x36) + chr(0x38) + chr(0x66) + chr(0x37) + chr(0x35) + '}'
+```
+
+Each chr(0x..) converts a hexadecimal ASCII code into a character.
+
+
+![image](https://github.com/user-attachments/assets/3510f65b-8a15-4136-bc74-e6158ed286cd)
+
+**Flag:**
+
+```
+picoCTF{gl17ch_m3_n07_bda68f75}
+```
+
 ## Time Machine
 
 ```
