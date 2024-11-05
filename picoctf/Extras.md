@@ -43,6 +43,27 @@ Connection to atlas.picoctf.net closed.
 ```
 picoCTF{g00d_gu355_3af33d18}
 ```
+## Super SSH
+
+![image](https://github.com/user-attachments/assets/e50b37f5-e5ed-45ee-9a99-bb7015c68644)
+
+```
+root@DhruvsPC:~# ssh -p 64948 ctf-player@titan.picoctf.net
+The authenticity of host '[titan.picoctf.net]:64948 ([3.139.174.234]:64948)' can't be established.
+ED25519 key fingerprint is SHA256:4S9EbTSSRZm32I+cdM5TyzthpQryv5kudRP9PIKT7XQ.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[titan.picoctf.net]:64948' (ED25519) to the list of known hosts.
+ctf-player@titan.picoctf.net's password:
+Welcome ctf-player, here's your flag: picoCTF{s3cur3_c0nn3ct10n_45a48857}
+Connection to titan.picoctf.net closed.
+```
+
+**Flag:**
+
+```
+picoCTF{s3cur3_c0nn3ct10n_45a48857}
+```
 
 ## Time Machine
 
