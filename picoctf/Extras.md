@@ -104,6 +104,61 @@ picoCTF{nEtCat_Mast3ry_d0c64587}
 
 Recources: https://linux.die.net/man/1/nc
 
+## Nice netcat...
+
+```
+root@DhruvsPC:~# nc mercury.picoctf.net 35652
+112
+105
+99
+111
+67
+84
+70
+123
+103
+48
+48
+100
+95
+107
+49
+116
+116
+121
+33
+95
+110
+49
+99
+51
+95
+107
+49
+116
+116
+121
+33
+95
+57
+98
+51
+98
+55
+51
+57
+50
+125
+10
+```
+![image](https://github.com/user-attachments/assets/947bce2e-7741-4ce1-93e0-305748e2ed1f)
+
+**Flag:**
+
+```
+picoCTF{g00d_k1tty!_n1c3_k1tty!_9b3b7392}
+```
+
 ## Glitch Cat
 
 ```
