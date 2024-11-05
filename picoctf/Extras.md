@@ -209,7 +209,55 @@ What is 0x3D (base 16) in decimal (base 10)?
 picoCTF{61}
 ```
 
-# Binary Exploitation
+## 2Warm
+
+Can you convert the number 42 (base 10) to binary (base 2)?
+
+![image](https://github.com/user-attachments/assets/28b2ea92-4041-44f7-88a2-2dd89a1e56cc)
+
+**Flag:**
+
+```
+picoCTF{101010}
+```
+
+## Bases
+
+What does this bDNhcm5fdGgzX3IwcDM1 mean? I think it has something to do with bases.
+
+![image](https://github.com/user-attachments/assets/c6f9f638-dab1-4a36-94d3-d42affdb0f8d)
+
+**Flag:**
+
+```
+picoCTF{l3arn_th3_r0p35}
+```
+
+## Wave a flag
+
+Approach: Just executed the file and followed the instructions
+
+Gave myself (user/owner/root) permission to execute the file using chmod command leanrt in task phase 1 
+
+```
+root@DhruvsPC:~# ./warm
+-bash: ./warm: Permission denied
+root@DhruvsPC:~# ls -l warm
+-rw-r--r-- 1 root root 10936 Nov  6 03:50 warm
+root@DhruvsPC:~# chmod u+x warm
+root@DhruvsPC:~# ./warm
+Hello user! Pass me a -h to learn what I can do!
+root@DhruvsPC:~# -h
+-h: command not found
+root@DhruvsPC:~# ./warm -h
+Oh, help? I actually don't do much, but I do have this flag here: picoCTF{b1scu1ts_4nd_gr4vy_d6969390}
+```
+
+**Flag:**
+
+```
+picoCTF{b1scu1ts_4nd_gr4vy_d6969390}
+```
 
 ## heap 0
 
