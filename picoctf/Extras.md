@@ -35,3 +35,12 @@ Congratulations! You guessed the correct number: 512
 Here's your flag: picoCTF{g00d_gu355_3af33d18}
 Connection to atlas.picoctf.net closed.
 ```
+
+# Forensics
+
+## Scan Surprise
+
+![flag](https://github.com/user-attachments/assets/1077a5c8-9b8b-434f-bf16-955f38484720)
+```
+
+```
