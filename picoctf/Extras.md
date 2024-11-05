@@ -197,6 +197,18 @@ What was I last working on? I remember writing a note to help me remember...
 picoCTF{t1m3m@ch1n3_186cd7d7}
 ```
 
+## Warmed Up
+
+What is 0x3D (base 16) in decimal (base 10)?
+
+![image](https://github.com/user-attachments/assets/8e9fa886-907c-43d9-ae2e-01a0a7922902)
+
+**Flag:**
+
+```
+picoCTF{61}
+```
+
 # Binary Exploitation
 
 ## heap 0
