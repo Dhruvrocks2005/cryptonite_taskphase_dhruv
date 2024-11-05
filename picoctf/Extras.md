@@ -102,6 +102,10 @@ picoCTF{nEtCat_Mast3ry_d0c64587}
 picoCTF{nEtCat_Mast3ry_d0c64587}
 ```
 
+**Knowledge Gained:**
+
+`nc` command
+
 Recources: https://linux.die.net/man/1/nc
 
 ## Nice netcat...
@@ -258,6 +262,35 @@ Oh, help? I actually don't do much, but I do have this flag here: picoCTF{b1scu1
 ```
 picoCTF{b1scu1ts_4nd_gr4vy_d6969390}
 ```
+
+## Tab, Tab, Attack
+
+Approach: Just followed the instructions and found the flag
+
+```
+root@DhruvsPC:~# cd Addadshashanammu/Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku/
+root@DhruvsPC:~/Addadshashanammu/Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku# ls
+fang-of-haynekhtnamet  fang-of-haynekhtnamet:Zone.Identifier
+root@DhruvsPC:~/Addadshashanammu/Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku# ./fang-of-haynekhtnamet
+-bash: ./fang-of-haynekhtnamet: Permission denied
+root@DhruvsPC:~/Addadshashanammu/Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku# ls -l fang-of-haynekhtnamet
+-rw-r--r-- 1 root root 8320 Nov  6 03:56 fang-of-haynekhtnamet
+root@DhruvsPC:~/Addadshashanammu/Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku# chmod u+x fang-of-haynekhtnamet
+root@DhruvsPC:~/Addadshashanammu/Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku# ./fang-of-haynekhtnamet
+*ZAP!* picoCTF{l3v3l_up!_t4k3_4_r35t!_d32e018c}
+```
+
+**Flag:**
+
+```
+ picoCTF{l3v3l_up!_t4k3_4_r35t!_d32e018c}
+```
+
+**Knowledge Gained:**
+
+Using tabcomplete in the Terminal 
+
+# Binary Exploitation
 
 ## heap 0
 
