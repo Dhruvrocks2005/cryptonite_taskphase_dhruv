@@ -44,6 +44,26 @@ Connection to atlas.picoctf.net closed.
 picoCTF{g00d_gu355_3af33d18}
 ```
 
+## Time Machine
+
+```
+Description
+What was I last working on? I remember writing a note to help me remember...
+```
+
+**Approach: Found the flag in the `challenge\drop-in\.git\COMMIT_EDITMSG` , `challenge\drop-in\.git\logs\HEAD` and `challenge\drop-in\.git\logs\refs\heads\master` files**
+
+
+![image](https://github.com/user-attachments/assets/20e32bf0-3c23-485d-9ee6-b386c6be0b41)
+
+![image](https://github.com/user-attachments/assets/c56f4efc-24ff-46d6-b0a9-c5cf18ebdcc5)
+
+**Flag:**
+
+```
+picoCTF{t1m3m@ch1n3_186cd7d7}
+```
+
 # Binary Exploitation
 
 ## heap 0
