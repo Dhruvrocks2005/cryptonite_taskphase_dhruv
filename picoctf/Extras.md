@@ -806,3 +806,15 @@ The encoded string is in Base64 format. Decoding it reveals the flag.
 ```
 picoCTF{web_succ3ssfully_d3c0ded_02cdcb59}
 ```
+
+## Unminify
+
+**Approach: Found the flag upon inspecting the page**
+
+![image](https://github.com/user-attachments/assets/36e85b58-e2a6-4930-bd50-43304840dc57)
+
+**Flag:**
+
+```
+picoCTF{pr3tty_c0d3_b99eb82e}
+```
