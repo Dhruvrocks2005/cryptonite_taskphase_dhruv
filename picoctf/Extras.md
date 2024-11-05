@@ -155,6 +155,37 @@ picoCTF{my_first_heap_overflow_4fa6dd49}
 
 # Forensics
 
+## Secret of the Polyglot
+
+I opened the given PDF file and found half of the flag there.
+
+![image](https://github.com/user-attachments/assets/bf495ad8-4523-469f-b7e2-f72206b27548)
+
+```
+1n_pn9_&_pdf_724b1287}
+```
+
+The given second part of the flag hints that the first part is related to PNG.
+
+When I opened the given file in a text editor, I found out that it has elements of both a pdf and a png.
+
+Then I opened the file in a hex editor, identified the PNG signature (starting with 89 50 4E 47 0D 0A 1A 0A and ending with 49 45 4E 44 AE 42 60 82), and isolated the PNG data from the rest of the PDF content.
+
+
+![image](https://github.com/user-attachments/assets/7be3e1c4-ce8e-4251-8bed-1866728629f6)
+
+The PNG contained the first half of the flag:
+
+![hello](https://github.com/user-attachments/assets/3273e2cf-38c6-41b2-abf4-acdc02d23981)
+
+![image](https://github.com/user-attachments/assets/617b13eb-dd1d-4f69-beb2-88aabd012402)
+
+**Flag:**
+
+```
+picoCTF{f1u3n7_1n_pn9_&_pdf_724b1287}
+```
+
 ## Scan Surprise
 
 ![flag](https://github.com/user-attachments/assets/1077a5c8-9b8b-434f-bf16-955f38484720)
