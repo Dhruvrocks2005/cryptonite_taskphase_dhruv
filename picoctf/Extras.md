@@ -43,6 +43,22 @@ Connection to atlas.picoctf.net closed.
 ```
 picoCTF{g00d_gu355_3af33d18}
 ```
+
+## Obedient Cat
+
+**Approach: Just open the downloaded file in a text editor or cat it in linux**
+
+```
+root@DhruvsPC:~# cat flag
+picoCTF{s4n1ty_v3r1f13d_1a94e0f9}
+```
+
+**Flag:**
+
+```
+picoCTF{s4n1ty_v3r1f13d_1a94e0f9}
+```
+
 ## Super SSH
 
 ![image](https://github.com/user-attachments/assets/e50b37f5-e5ed-45ee-9a99-bb7015c68644)
