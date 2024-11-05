@@ -890,3 +890,41 @@ picoCTF{web_succ3ssfully_d3c0ded_02cdcb59}
 ```
 picoCTF{pr3tty_c0d3_b99eb82e}
 ```
+
+# Cryptography
+
+## interencdec
+
+```
+YidkM0JxZGtwQlRYdHFhR3g2YUhsZmF6TnFlVGwzWVROclh6YzRNalV3YUcxcWZRPT0nCg==
+```
+
+Given string was encoded in base64.
+
+![image](https://github.com/user-attachments/assets/8cd3a341-d77e-4ad0-8836-7c57ae9c57b9)
+
+```
+b'd3BqdkpBTXtqaGx6aHlfazNqeTl3YTNrXzc4MjUwaG1qfQ=='
+```
+
+After decoding it, the result also seemed to be encoded in base64.
+
+![image](https://github.com/user-attachments/assets/c98eedf1-fecd-4443-8e70-7ade9a2cc8bd)
+
+```
+wpjvJAM{jhlzhy_k3jy9wa3k_78250hmj}
+```
+
+After decoding it, the result seemed to be encoded in caesar cypher.
+
+![image](https://github.com/user-attachments/assets/baf4d070-c728-48b5-92d2-ba60b8904ac6)
+
+After decoding it, I found the flag.
+
+**Flag:**
+
+```
+picoCTF{caesar_d3cr9pt3d_78250afc}
+```
+
+Tool used: https://cryptii.com/
