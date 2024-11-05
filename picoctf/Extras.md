@@ -286,9 +286,7 @@ root@DhruvsPC:~/Addadshashanammu/Addadshashanammu/Almurbalarammi/Ashalmimilkala/
 picoCTF{l3v3l_up!_t4k3_4_r35t!_d32e018c}
 ```
 
-**Knowledge Gained:**
-
-Using tabcomplete in the Terminal 
+**Knowledge Gained:** Using tabcomplete in the Terminal 
 
 ## strings it
 
@@ -331,6 +329,101 @@ picoCTF{grep_is_good_to_find_things_5af9d829}
 
 ```
 picoCTF{grep_is_good_to_find_things_5af9d829}
+```
+
+## Python Wrangling
+
+```
+Python scripts are invoked kind of like programs in the Terminal... 
+Can you run this Python script (ende.py) using this password (6008014f6008014f6008014f6008014f) to get the flag (flag.txt.en) ?
+```
+
+```
+root@DhruvsPC:~# python3 ende.py -d flag.txt.en
+Please enter the password:6008014f6008014f6008014f6008014f
+picoCTF{4p0110_1n_7h3_h0us3_6008014f}
+```
+
+**Flag:**
+
+```
+picoCTF{4p0110_1n_7h3_h0us3_6008014f}
+```
+
+**Knowledge Gained:** Learnt how to run python scripts on the terminal
+
+## PW Crack 1
+
+![image](https://github.com/user-attachments/assets/10572336-24b1-4a66-9c9f-2a5509919df8)
+
+From the given code, required password is `8713`
+
+```
+root@DhruvsPC:~# python3 level1.py
+Please enter correct password for flag: 8713
+Welcome back... your flag, user:
+picoCTF{545h_r1ng1ng_1b2fd683}
+```
+
+**Flag:**
+
+```
+picoCTF{545h_r1ng1ng_1b2fd683}
+```
+
+## PW Crack 2
+
+![image](https://github.com/user-attachments/assets/629798a3-f7bb-4f3b-8455-8a48aefe19fb)
+
+From the given code, required password is `chr(0x34) + chr(0x65) + chr(0x63) + chr(0x39)` which is `4ec9` (converting each hexadecimal value into its corresponding ASCII character)
+
+```
+root@DhruvsPC:~# python3 level2.py
+Please enter correct password for flag: 4ec9
+Welcome back... your flag, user:
+picoCTF{tr45h_51ng1ng_9701e681}
+```
+
+**Flag:**
+
+```
+picoCTF{tr45h_51ng1ng_9701e681}
+```
+
+## PW Crack 3
+
+```
+Description
+Can you crack the password to get the flag?
+Download the password checker here and you'll need the encrypted flag and the hash in the same directory too.
+There are 7 potential passwords with 1 being correct. You can find these by examining the password checker script.
+```
+
+![image](https://github.com/user-attachments/assets/b6d69c17-11aa-4414-b1e1-d9b31ab15af3)
+
+```
+root@DhruvsPC:~# python3 level3.py
+Please enter correct password for flag: 8799
+That password is incorrect
+root@DhruvsPC:~# python3 level3.py
+Please enter correct password for flag: d3ab
+That password is incorrect
+root@DhruvsPC:~# python3 level3.py
+Please enter correct password for flag: 1ea2
+That password is incorrect
+root@DhruvsPC:~# python3 level3.py
+Please enter correct password for flag: acaf
+That password is incorrect
+root@DhruvsPC:~# python3 level3.py
+Please enter correct password for flag: 2295
+Welcome back... your flag, user:
+picoCTF{m45h_fl1ng1ng_6f98a49f}
+```
+
+**Flag:**
+
+```
+picoCTF{m45h_fl1ng1ng_6f98a49f}
 ```
 
 # Binary Exploitation
