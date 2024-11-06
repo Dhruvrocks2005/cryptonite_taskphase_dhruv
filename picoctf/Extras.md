@@ -1720,6 +1720,84 @@ password.charAt(31) == '4'
 picoCTF{d35cr4mbl3_tH3_cH4r4cT3r5_f6daf4}
 ```
 
+## vault-door-4
+
+**Approach:** The flag is given in the program's source code
+
+```
+import java.util.*;
+
+class VaultDoor4 {
+    public static void main(String args[]) {
+        VaultDoor4 vaultDoor = new VaultDoor4();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter vault password: ");
+        String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+        }
+    }
+
+    // I made myself dizzy converting all of these numbers into different bases,
+    // so I just *know* that this vault will be impenetrable. This will make Dr.
+    // Evil like me better than all of the other minions--especially Minion
+    // #5620--I just know it!
+    //
+    //  .:::.   .:::.
+    // :::::::.:::::::
+    // :::::::::::::::
+    // ':::::::::::::'
+    //   ':::::::::'
+    //     ':::::'
+    //       ':'
+    // -Minion #7781
+    public boolean checkPassword(String password) {
+        byte[] passBytes = password.getBytes();
+        byte[] myBytes = {
+            106 , 85  , 53  , 116 , 95  , 52  , 95  , 98  ,
+            0x55, 0x6e, 0x43, 0x68, 0x5f, 0x30, 0x66, 0x5f,
+            0142, 0131, 0164, 063 , 0163, 0137, 0146, 064 ,
+            'a' , '8' , 'c' , 'd' , '8' , 'f' , '7' , 'e' ,
+        };
+        for (int i=0; i<32; i++) {
+            if (passBytes[i] != myBytes[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+The given list contains integers in different formats (decimal, hexadecimal, octal, and characters) representing ASCII values. We need to convert each value to its corresponding character to obtain the flag.
+
+- Decimal values:  
+  (106) = `j`, (85) = `U`, (53) = `5`, (116) = `t`, (95) = `_`, (52) = `4`, (95) = `_`, (98) = `b`
+
+- Hexadecimal values:  
+  (0x55) = `U`, (0x6e) = `n`, (0x43) = `C`, (0x68) = `h`, (0x5f) = `_`, (0x30) = `0`, (0x66) = `f`, (0x5f) = `_`
+
+- Octal values:  
+  (0142) = `b`, (0131) = `Y`, (0164) = `t`, (063) = `3`, (0163) = `s`, (0137) = `_`, (0146) = `f`, (064) = `4`
+
+- Character literals:  
+  `'a'`, `'8'`, `'c'`, `'d'`, `'8'`, `'f'`, `'7'`, `'e'`
+
+Putting it all together, the text is:
+
+```
+jU5t_4_bUnCh_0f_bYt3s_f4a8cd8f7e
+```
+
+**Flag:**
+
+```
+picoCTF{jU5t_4_bUnCh_0f_bYt3s_f4a8cd8f7e}
+```
+
 ## keygenme-py
 
 The flag is `picoCTF{1n_7h3_|<3y_of_xxxxxxxx}` where `xxxxxxxx` is the dynamic part that changes based on the username `SCHOFIELD`.
