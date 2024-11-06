@@ -1338,7 +1338,9 @@ Usage of loops in the Linux shell
 
 **Approach:** Found the flag when I opened the file in a text editor
 
-[enhance.pdf](https://github.com/user-attachments/files/17640285/enhance.pdf)
+![image](https://github.com/user-attachments/assets/0ea707cf-86b6-4d1a-9a47-92ad0ce4b044)
+
+![image](https://github.com/user-attachments/assets/6d0191f9-aa21-4a4f-9c71-cb460e4f320b)
 
 **Flag:**
 
