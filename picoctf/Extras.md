@@ -1334,6 +1334,18 @@ picoCTF{trust_but_verify_c6c8b911}
 
 Usage of loops in the Linux shell
 
+## Enhance!
+
+**Approach:** Found the flag when I opened the file in a text editor
+
+[enhance.pdf](https://github.com/user-attachments/files/17640285/enhance.pdf)
+
+**Flag:**
+
+```
+picoCTF{3nh4nc3d_aab729dd}
+```
+
 # Web Exploitation
 
 ## WebDecode
