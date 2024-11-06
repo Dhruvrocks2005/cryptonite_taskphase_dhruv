@@ -1463,6 +1463,29 @@ picoCTF{tru3_d3t3ct1ve_0r_ju5t_lucky?832b0699}
 ```
 picoCTF{ca1cu1at1ng_Mach1n3s_8028f}
 ```
+## Power Cookie
+
+**Approach: Modifying cookies**
+
+![image](https://github.com/user-attachments/assets/28ae55da-72e1-4954-9822-3c20cc31200e)
+
+I clicked continue as guest and a cookie named isAdmin with value 0 was generated.
+
+![image](https://github.com/user-attachments/assets/bfe3f28e-120f-430c-bff8-ba2e14454be1)
+
+I edited the cookie value to 1.
+
+![image](https://github.com/user-attachments/assets/c8b22140-1b06-45eb-9077-ffa287613a5b)
+
+I received the flag upon refreshing the page.
+
+![image](https://github.com/user-attachments/assets/c7264b34-d467-49fc-82d6-b640da713074)
+
+**Flag:**
+
+```
+picoCTF{gr4d3_A_c00k13_65fd1e1a}
+```
 
 # Cryptography
 
