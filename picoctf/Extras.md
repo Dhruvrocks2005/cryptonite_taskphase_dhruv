@@ -564,6 +564,25 @@ Decrypted Flag: picoCTF{h45h_sl1ng1ng_fffcda23}
 picoCTF{h45h_sl1ng1ng_fffcda23}
 ```
 
+## Big Zip
+
+**Knowledge gained:** 
+`grep` can be instructed to search through all files in a directory and its subdirectories using the `-r` (recursive) option
+
+```
+root@DhruvsPC:~# grep 'picoCTF' big-zip-files
+grep: big-zip-files: Is a directory
+root@DhruvsPC:~# grep -r 'picoCTF' big-zip-files
+big-zip-files/big-zip-files/folder_pmbymkjcya/folder_cawigcwvgv/folder_ltdayfmktr/folder_fnpfclfyee/whzxrpivpqld.txt:information on the record will last a billion years. Genes and brains and books encode picoCTF{gr3p_15_m4g1c_ef8790dc}
+```
+
+**Flag:**
+
+```
+ picoCTF{gr3p_15_m4g1c_ef8790dc}
+```
+
+
 # Binary Exploitation
 
 ## heap 0
