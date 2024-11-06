@@ -1506,3 +1506,63 @@ picoCTF{next_time_I'll_try_2_rounds_of_rot13_aFxtzQWR}
 ```
 picoCTF{next_time_I'll_try_2_rounds_of_rot13_aFxtzQWR}
 ```
+
+
+# Reverse Engineering
+
+## vault-door-training
+
+**Approach:** The flag is given in the program's source code
+
+```
+import java.util.*;
+
+class VaultDoorTraining {
+    public static void main(String args[]) {
+        VaultDoorTraining vaultDoor = new VaultDoorTraining();
+        Scanner scanner = new Scanner(System.in); 
+        System.out.print("Enter vault password: ");
+        String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+	}
+   }
+
+    // The password is below. Is it safe to put the password in the source code?
+    // What if somebody stole our source code? Then they would know what our
+    // password is. Hmm... I will think of some ways to improve the security
+    // on the other doors.
+    //
+    // -Minion #9567
+    public boolean checkPassword(String password) {
+        return password.equals("w4rm1ng_Up_w1tH_jAv4_be8d9806f18");
+    }
+}
+```
+
+**Flag:**
+
+```
+picoCTF{w4rm1ng_Up_w1tH_jAv4_be8d9806f18}
+```
+
+## keygenme-py
+
+The flag is `picoCTF{1n_7h3_|<3y_of_xxxxxxxx}` where `xxxxxxxx` is the dynamic part that changes based on the username `SCHOFIELD`.
+
+The dynamic part of the flag is derived from the username SCHOFIELD by hashing it with SHA-256 and extracting specific characters from the hash.
+
+The code specifically grabs the following characters from the SHA-256 hash: hash[4], hash[5], hash[3, ]hash[6], hash[2], hash[7], hash[1], hash[8].
+
+Calculating the dynamic part of the flag:
+
+![image](https://github.com/user-attachments/assets/b117489f-c1ab-4e59-80c9-026d8b3ed624)
+
+**Flag:**
+
+```
+picoCTF{1n_7h3_|<3y_of_e584b363}
+```
