@@ -1585,3 +1585,73 @@ Calculating the dynamic part of the flag:
 ```
 picoCTF{1n_7h3_|<3y_of_e584b363}
 ```
+
+## Safe Opener
+
+Program:
+```
+import java.io.*;
+import java.util.*;  
+public class SafeOpener {
+    public static void main(String args[]) throws IOException {
+        BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
+        Base64.Encoder encoder = Base64.getEncoder();
+        String encodedkey = "";
+        String key = "";
+        int i = 0;
+        boolean isOpen;
+        
+
+        while (i < 3) {
+            System.out.print("Enter password for the safe: ");
+            key = keyboard.readLine();
+
+            encodedkey = encoder.encodeToString(key.getBytes());
+            System.out.println(encodedkey);
+              
+            isOpen = openSafe(encodedkey);
+            if (!isOpen) {
+                System.out.println("You have  " + (2 - i) + " attempt(s) left");
+                i++;
+                continue;
+            }
+            break;
+        }
+    }
+    
+    public static boolean openSafe(String password) {
+        String encodedkey = "cGwzYXMzX2wzdF9tM18xbnQwX3RoM19zYWYz";
+        
+        if (password.equals(encodedkey)) {
+            System.out.println("Sesame open");
+            return true;
+        }
+        else {
+            System.out.println("Password is incorrect\n");
+            return false;
+        }
+    }
+}
+```
+
+According to the program, the encoded key is `cGwzYXMzX2wzdF9tM18xbnQwX3RoM19zYWYz`, which is encoded in Base64.
+
+![image](https://github.com/user-attachments/assets/d1bcd48c-1cda-4b84-824e-f7d8fb556910)
+
+**Flag:**
+
+```
+picoCTF{pl3as3_l3t_m3_1nt0_th3_saf3}
+```
+
+## Safe Opener 2
+
+I found the flag when I opened the file with a text editor.
+
+![image](https://github.com/user-attachments/assets/30886d31-17de-4e27-9ee8-92d6b09b1869)
+
+**Flag:**
+
+```
+picoCTF{SAf3_0p3n3rr_y0u_solv3d_it_198203f7}
+```
