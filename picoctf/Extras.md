@@ -1367,6 +1367,52 @@ Usage of loops in the Linux shell
 picoCTF{3nh4nc3d_aab729dd}
 ```
 
+## Glory of the Garden
+
+**Approach:** Opened the file in a text editor and searched (ctrl+f) for the flag format
+
+![image](https://github.com/user-attachments/assets/9b18e5ec-28ac-4c79-ab64-0a054e7504f6)
+
+**Flag:**
+
+```
+picoCTF{more_than_m33ts_the_3y3657BaB2C}
+```
+
+## Sleuthkit Intro
+
+```
+Description
+Download the disk image and use mmls on it to find the size of the Linux partition. Connect to the remote checker service to check your answer and get the flag.
+Note: if you are using the webshell, download and extract the disk image into /tmp not your home directory.
+Download disk image
+Access checker program: nc saturn.picoctf.net 52439
+```
+
+```
+root@DhruvsPC:~# mmls disk.img
+DOS Partition Table
+Offset Sector: 0
+Units are in 512-byte sectors
+
+      Slot      Start        End          Length       Description
+000:  Meta      0000000000   0000000000   0000000001   Primary Table (#0)
+001:  -------   0000000000   0000002047   0000002048   Unallocated
+002:  000:000   0000002048   0000204799   0000202752   Linux (0x83)
+root@DhruvsPC:~# nc saturn.picoctf.net 52439
+What is the size of the Linux partition in the given disk image?
+Length in sectors: 202752
+202752
+Great work!
+picoCTF{mm15_f7w!}
+```
+
+**Flag:**
+
+```
+picoCTF{mm15_f7w!}
+```
+
 # Web Exploitation
 
 ## WebDecode
