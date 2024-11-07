@@ -1413,6 +1413,18 @@ picoCTF{mm15_f7w!}
 picoCTF{mm15_f7w!}
 ```
 
+## Packets Primer
+
+Download the packet capture file and use packet analysis software to find the flag. - `Wireshark`
+
+![image](https://github.com/user-attachments/assets/afdfb6e1-81ea-45d8-a0fe-11818a8780ab)
+
+**Flag:**
+
+```
+picoCTF{p4ck37_5h4rk_ceccaa7f}
+```
+
 # Web Exploitation
 
 ## WebDecode
