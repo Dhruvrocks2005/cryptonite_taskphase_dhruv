@@ -59,6 +59,16 @@ picoCTF{s4n1ty_v3r1f13d_1a94e0f9}
 picoCTF{s4n1ty_v3r1f13d_1a94e0f9}
 ```
 
+## ASCII Numbers
+
+![image](https://github.com/user-attachments/assets/b888870d-5012-4476-b9b0-91f725e63c6b)
+
+**Flag:**
+
+```
+picoCTF{45c11_n0_qu35710n5_1ll_t311_y3_n0_l135_445d4180}
+```
+
 ## Super SSH
 
 ![image](https://github.com/user-attachments/assets/e50b37f5-e5ed-45ee-9a99-bb7015c68644)
@@ -2364,4 +2374,39 @@ I found the flag when I opened the file with a text editor.
 
 ```
 picoCTF{SAf3_0p3n3rr_y0u_solv3d_it_198203f7}
+```
+
+## Picker I
+
+**win() function:**
+
+```
+def win():
+  # This line will not work locally unless you create your own 'flag.txt' in
+  #   the same directory as this script
+  flag = open('flag.txt', 'r').read()
+  #flag = flag[:-1]
+  flag = flag.strip()
+  str_flag = ''
+  for c in flag:
+    str_flag += str(hex(ord(c))) + ' '
+  print(str_flag)
+```
+
+**command used:**
+
+```
+root@DhruvsPC:~# nc saturn.picoctf.net 53990
+Try entering "getRandomNumber" without the double quotes...
+==> win
+0x70 0x69 0x63 0x6f 0x43 0x54 0x46 0x7b 0x34 0x5f 0x64 0x31 0x34 0x6d 0x30 0x6e 0x64 0x5f 0x31 0x6e 0x5f 0x37 0x68 0x33 0x5f 0x72 0x30 0x75 0x67 0x68 0x5f 0x63 0x65 0x34 0x62 0x35 0x64 0x35 0x62 0x7d
+```
+**Decoding flag from hex:**
+
+![image](https://github.com/user-attachments/assets/7266edef-6061-4c30-997c-999c3f0c45ec)
+
+**Flag:**
+
+```
+picoCTF{4_d14m0nd_1n_7h3_r0ugh_ce4b5d5b}
 ```
