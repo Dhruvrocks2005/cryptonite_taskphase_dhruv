@@ -90,3 +90,60 @@ jU5t_a_s 1mpl3_an 4g r4 m_ 4_ u_ c7 9a 21
 ```
 picoCTF{jU5t_a_s1mpl3_an4gr4m_4_u_c79a21}
 ```
+
+## GDB baby step 1
+
+Learned about `gdb` in the `Low Level Binary Intro` playlist on `picoCTF`:
+
+```
+GDB is a well-known debugger that can do disassembly as well. If you don’t have access to GDB on your own machine, I would recommend using our webshell to use GDB. If you already have some expertise in a different debugger/disassembler, by all means use that, but this playlist will be addressing these problems from a GDB perspective.
+
+Revisit the hints in Obedient Cat if you need a refresher on downloading challenge artifacts to your webshell.
+
+Start GDB by passing it the name of the program you’ve been given, i.e. $ gdb program_to_debug. If you need a refresher on how to make a file executable, see the hints in file-run1. This only matters if you run the program in GDB, but it’s a good habit to get into.
+
+Once it loads, disassemble main with the command: (gdb) disassemble main, at this point, you should be presented with a disassembly listing very alike to the ones you have been dealing with.
+```
+
+Challenge Description:
+
+```
+Can you figure out what is in the eax register at the end of the main function? Put your answer in the picoCTF flag format: picoCTF{n} where n is the contents of the eax register in the decimal number base. If the answer was 0x11 your flag would be picoCTF{17}.
+Disassemble this.
+```
+
+Command used:
+
+```
+gdb debugger0_a
+(gdb) disassemble main
+```
+
+![image](https://github.com/user-attachments/assets/858496f9-5f11-412b-9040-7026c8182627)
+
+**Disassembled Code:**
+
+```
+Dump of assembler code for function main:
+   0x0000000000001129 <+0>:     endbr64
+   0x000000000000112d <+4>:     push   %rbp
+   0x000000000000112e <+5>:     mov    %rsp,%rbp
+   0x0000000000001131 <+8>:     mov    %edi,-0x4(%rbp)
+   0x0000000000001134 <+11>:    mov    %rsi,-0x10(%rbp)
+   0x0000000000001138 <+15>:    mov    $0x86342,%eax
+   0x000000000000113d <+20>:    pop    %rbp
+   0x000000000000113e <+21>:    ret
+End of assembler dump.
+```
+
+Content of the eax register: `0x86342`
+
+Converting it to decimal format:
+
+![image](https://github.com/user-attachments/assets/f3b8a880-f186-4f8b-b126-4d8b842acd3c)
+
+**Flag:**
+
+```
+picoCTF{549698}
+```
