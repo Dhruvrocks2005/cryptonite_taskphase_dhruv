@@ -18,4 +18,4 @@
 
 ## Dashboard (with username and graph of all challenges solved):
 
-![image](https://github.com/user-attachments/assets/7d8fa3b1-66d2-402d-9c9f-d2bcdaab215f)
+![image](https://github.com/user-attachments/assets/124fd925-0ebf-4e5d-b8f4-0218ab23086f)
