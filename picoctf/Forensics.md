@@ -5,7 +5,7 @@
 
 **Resources Used:**
 - Wireshark
-- Forensics in CTF's playlist on picoCTF - https://play.picoctf.org/playlists/16?m=114
+- `Forensics in CTF's` playlist on `picoCTF` - https://play.picoctf.org/playlists/16?m=114
 - https://play.picoctf.org/playlists/16?m=127
 - https://www.youtube.com/watch?v=J-wgivK4X-A&t=9s&ab_channel=picoCTF%2CCarnegieMellonUniversity
 
