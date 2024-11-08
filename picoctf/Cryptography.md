@@ -134,6 +134,236 @@ Initially, I didn't notice the `selfinput` comment, so I tried to provide the ci
 picoCTF{adlibs}
 ```
 
+## Custom encryption
+
+**Description:**
+
+```
+Can you get sense of this code file and write the function that will decode the given encrypted file content.
+Find the encrypted file here flag_info and code file might be good to analyze and get the flag.
+```
+<br>
+
+**Given encoder program:**
+
+```
+from random import randint
+import sys
+
+
+def generator(g, x, p):
+    return pow(g, x) % p
+
+
+def encrypt(plaintext, key):
+    cipher = []
+    for char in plaintext:
+        cipher.append(((ord(char) * key*311)))
+    return cipher
+
+
+def is_prime(p):
+    v = 0
+    for i in range(2, p + 1):
+        if p % i == 0:
+            v = v + 1
+    if v > 1:
+        return False
+    else:
+        return True
+
+
+def dynamic_xor_encrypt(plaintext, text_key):
+    cipher_text = ""
+    key_length = len(text_key)
+    for i, char in enumerate(plaintext[::-1]):
+        key_char = text_key[i % key_length]
+        encrypted_char = chr(ord(char) ^ ord(key_char))
+        cipher_text += encrypted_char
+    return cipher_text
+
+
+def test(plain_text, text_key):
+    p = 97
+    g = 31
+    if not is_prime(p) and not is_prime(g):
+        print("Enter prime numbers")
+        return
+    a = randint(p-10, p)
+    b = randint(g-10, g)
+    print(f"a = {a}")
+    print(f"b = {b}")
+    u = generator(g, a, p)
+    v = generator(g, b, p)
+    key = generator(v, a, p)
+    b_key = generator(u, b, p)
+    shared_key = None
+    if key == b_key:
+        shared_key = key
+    else:
+        print("Invalid key")
+        return
+    semi_cipher = dynamic_xor_encrypt(plain_text, text_key)
+    cipher = encrypt(semi_cipher, shared_key)
+    print(f'cipher is: {cipher}')
+
+
+if __name__ == "__main__":
+    message = sys.argv[1]
+    test(message, "trudeau")
+```
+<br>
+
+**Given encrypted flag:**
+
+```
+a = 89
+b = 27
+cipher is: [33588, 276168, 261240, 302292, 343344, 328416, 242580, 85836, 82104, 156744, 0, 309756, 78372, 18660, 253776, 0, 82104, 320952, 3732, 231384, 89568, 100764, 22392, 22392, 63444, 22392, 97032, 190332, 119424, 182868, 97032, 26124, 44784, 63444]
+```
+
+<br>
+
+**Approach:** 
+
+**1. Initial Analysis:**
+
+First, I examined the encryption script (using claude) to understand the encryption process. The script revealed a multi-step encryption scheme:
+
+1. Uses Diffie-Hellman key exchange to generate a shared key
+2. Applies a custom XOR encryption with the key "trudeau"
+3. Finally multiplies each character by (shared_key * 311)
+
+**2. Breaking Down the Encryption Components:**
+
+**Diffie-Hellman Implementation:**
+
+```
+def generator(g, x, p):
+    return pow(g, x) % p
+```
+
+The script uses basic Diffie-Hellman with:
+- Prime modulus (p) = 97
+- Generator (g) = 31
+- Private keys: a = 89, b = 27
+
+
+**Custom XOR Encryption:**
+
+```
+def dynamic_xor_encrypt(plaintext, text_key):
+    cipher_text = ""
+    key_length = len(text_key)
+    for i, char in enumerate(plaintext[::-1]):
+        key_char = text_key[i % key_length]
+        encrypted_char = chr(ord(char) ^ ord(key_char))
+        cipher_text += encrypted_char
+    return cipher_text
+```
+
+Notable aspects:
+- Reverses the plaintext before XOR operation
+- Uses cyclic key "trudeau"
+- Character-by-character XOR operation
+
+**3. Decryption Strategy:**
+
+To decrypt the flag, I needed to:
+1. Calculate the shared key using given parameters
+2. Divide the ciphertext numbers by (shared_key * 311)
+3. Apply XOR decryption with "trudeau"
+4. Reverse the final string
+
+<br>
+
+**Script to reverse the cypher:**
+
+```
+def generator(g, x, p):
+    return pow(g, x) % p
+
+def decrypt(cipher, key):
+    plaintext = []
+    for num in cipher:
+        # Reverse the encryption: num = (ord(char) * key * 311)
+        # So char = num / (key * 311)
+        if num != 0:  # Handle special case for 0
+            char = chr(int(num / (key * 311)))
+            plaintext.append(char)
+        else:
+            plaintext.append('\x00')  # Add null byte for 0 values
+    return ''.join(plaintext)
+
+def dynamic_xor_decrypt(ciphertext, text_key):
+    plaintext = ""
+    key_length = len(text_key)
+    # Note: The original encryption reversed the string first, so we'll need to reverse our result
+    for i, char in enumerate(ciphertext):
+        key_char = text_key[i % key_length]
+        decrypted_char = chr(ord(char) ^ ord(key_char))
+        plaintext += decrypted_char
+    return plaintext[::-1]  # Reverse the final result
+
+def solve_ctf():
+    # Given values from the encryption
+    p = 97
+    g = 31
+    a = 89
+    b = 27
+    text_key = "trudeau"
+    
+    # Calculate shared key using Diffie-Hellman
+    u = generator(g, a, p)
+    v = generator(g, b, p)
+    shared_key = generator(v, a, p)
+    
+    # Encrypted data from flag_info
+    encrypted = [33588, 276168, 261240, 302292, 343344, 328416, 242580, 85836, 
+                82104, 156744, 0, 309756, 78372, 18660, 253776, 0, 82104, 
+                320952, 3732, 231384, 89568, 100764, 22392, 22392, 63444, 
+                22392, 97032, 190332, 119424, 182868, 97032, 26124, 44784, 63444]
+    
+    # First decrypt using the shared key
+    semi_decrypted = decrypt(encrypted, shared_key)
+    
+    # Then decrypt using XOR with the text_key
+    flag = dynamic_xor_decrypt(semi_decrypted, text_key)
+    
+    return flag
+
+if __name__ == "__main__":
+    flag = solve_ctf()
+    print(f"Decrypted flag: {flag}")
+```
+
+<br>
+
+**Output:**
+
+```
+Decrypted flag: picoCTF{custom_d2cr0pt6d_dc499538}
+```
+
+<br>
+
+![image](https://github.com/user-attachments/assets/109afc6e-50c9-4882-a4fd-7cff45983855)
+
+<br>
+
+![image](https://github.com/user-attachments/assets/efe83ccd-3173-40b1-9925-29c70ef10dc3)
+
+<br>
+
+**Flag:**
+
+```
+picoCTF{custom_d2cr0pt6d_dc499538}
+```
+
+**Resources Used:**
+- Claude.ai
+
 ## miniRSA
 
 **Given:**
