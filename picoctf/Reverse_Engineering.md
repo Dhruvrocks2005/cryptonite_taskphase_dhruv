@@ -1,4 +1,4 @@
-# Reverse Engineering
+# Reverse Engineering - Mandatory Challenges
 
 ## vault-door-3
 
@@ -371,3 +371,755 @@ To meet the 32-bit format, it becomes `0000005a`.
 ```
 picoCTF{0000005a}
 ```
+
+# Reverse Engineering - Extra Challenges
+
+## vault-door-training
+
+**Approach:** The flag is given in the program's source code
+
+```
+import java.util.*;
+
+class VaultDoorTraining {
+    public static void main(String args[]) {
+        VaultDoorTraining vaultDoor = new VaultDoorTraining();
+        Scanner scanner = new Scanner(System.in); 
+        System.out.print("Enter vault password: ");
+        String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+	}
+   }
+
+    // The password is below. Is it safe to put the password in the source code?
+    // What if somebody stole our source code? Then they would know what our
+    // password is. Hmm... I will think of some ways to improve the security
+    // on the other doors.
+    //
+    // -Minion #9567
+    public boolean checkPassword(String password) {
+        return password.equals("w4rm1ng_Up_w1tH_jAv4_be8d9806f18");
+    }
+}
+```
+
+**Flag:**
+
+```
+picoCTF{w4rm1ng_Up_w1tH_jAv4_be8d9806f18}
+```
+
+## vault-door-1
+
+**Approach:** The flag is given in the program's source code
+
+Source Code:
+
+```
+import java.util.*;
+
+class VaultDoor1 {
+    public static void main(String args[]) {
+        VaultDoor1 vaultDoor = new VaultDoor1();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter vault password: ");
+	String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+	}
+    }
+
+    // I came up with a more secure way to check the password without putting
+    // the password itself in the source code. I think this is going to be
+    // UNHACKABLE!! I hope Dr. Evil agrees...
+    //
+    // -Minion #8728
+    public boolean checkPassword(String password) {
+        return password.length() == 32 &&
+               password.charAt(0)  == 'd' &&
+               password.charAt(29) == 'a' &&
+               password.charAt(4)  == 'r' &&
+               password.charAt(2)  == '5' &&
+               password.charAt(23) == 'r' &&
+               password.charAt(3)  == 'c' &&
+               password.charAt(17) == '4' &&
+               password.charAt(1)  == '3' &&
+               password.charAt(7)  == 'b' &&
+               password.charAt(10) == '_' &&
+               password.charAt(5)  == '4' &&
+               password.charAt(9)  == '3' &&
+               password.charAt(11) == 't' &&
+               password.charAt(15) == 'c' &&
+               password.charAt(8)  == 'l' &&
+               password.charAt(12) == 'H' &&
+               password.charAt(20) == 'c' &&
+               password.charAt(14) == '_' &&
+               password.charAt(6)  == 'm' &&
+               password.charAt(24) == '5' &&
+               password.charAt(18) == 'r' &&
+               password.charAt(13) == '3' &&
+               password.charAt(19) == '4' &&
+               password.charAt(21) == 'T' &&
+               password.charAt(16) == 'H' &&
+               password.charAt(27) == '6' &&
+               password.charAt(30) == 'f' &&
+               password.charAt(25) == '_' &&
+               password.charAt(22) == '3' &&
+               password.charAt(28) == 'd' &&
+               password.charAt(26) == 'f' &&
+               password.charAt(31) == '4';
+    }
+}
+
+```
+
+Upon unscrambling it:
+
+```
+password.charAt(0)  == 'd'
+password.charAt(1)  == '3'
+password.charAt(2)  == '5'
+password.charAt(3)  == 'c'
+password.charAt(4)  == 'r'
+password.charAt(5)  == '4'
+password.charAt(6)  == 'm'
+password.charAt(7)  == 'b'
+password.charAt(8)  == 'l'
+password.charAt(9)  == '3'
+password.charAt(10) == '_'
+password.charAt(11) == 't'
+password.charAt(12) == 'H'
+password.charAt(13) == '3'
+password.charAt(14) == '_'
+password.charAt(15) == 'c'
+password.charAt(16) == 'H'
+password.charAt(17) == '4'
+password.charAt(18) == 'r'
+password.charAt(19) == '4'
+password.charAt(20) == 'c'
+password.charAt(21) == 'T'
+password.charAt(22) == '3'
+password.charAt(23) == 'r'
+password.charAt(24) == '5'
+password.charAt(25) == '_'
+password.charAt(26) == 'f'
+password.charAt(27) == '6'
+password.charAt(28) == 'd'
+password.charAt(29) == 'a'
+password.charAt(30) == 'f'
+password.charAt(31) == '4'
+```
+
+**Flag:**
+
+```
+picoCTF{d35cr4mbl3_tH3_cH4r4cT3r5_f6daf4}
+```
+
+## vault-door-4
+
+**Approach:** The flag is given in the program's source code
+
+```
+import java.util.*;
+
+class VaultDoor4 {
+    public static void main(String args[]) {
+        VaultDoor4 vaultDoor = new VaultDoor4();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter vault password: ");
+        String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+        }
+    }
+
+    // I made myself dizzy converting all of these numbers into different bases,
+    // so I just *know* that this vault will be impenetrable. This will make Dr.
+    // Evil like me better than all of the other minions--especially Minion
+    // #5620--I just know it!
+    //
+    //  .:::.   .:::.
+    // :::::::.:::::::
+    // :::::::::::::::
+    // ':::::::::::::'
+    //   ':::::::::'
+    //     ':::::'
+    //       ':'
+    // -Minion #7781
+    public boolean checkPassword(String password) {
+        byte[] passBytes = password.getBytes();
+        byte[] myBytes = {
+            106 , 85  , 53  , 116 , 95  , 52  , 95  , 98  ,
+            0x55, 0x6e, 0x43, 0x68, 0x5f, 0x30, 0x66, 0x5f,
+            0142, 0131, 0164, 063 , 0163, 0137, 0146, 064 ,
+            'a' , '8' , 'c' , 'd' , '8' , 'f' , '7' , 'e' ,
+        };
+        for (int i=0; i<32; i++) {
+            if (passBytes[i] != myBytes[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+The given list contains integers in different formats (decimal, hexadecimal, octal, and characters) representing ASCII values. We need to convert each value to its corresponding character to obtain the flag.
+
+- Decimal values:  
+  (106) = `j`, (85) = `U`, (53) = `5`, (116) = `t`, (95) = `_`, (52) = `4`, (95) = `_`, (98) = `b`
+
+- Hexadecimal values:  
+  (0x55) = `U`, (0x6e) = `n`, (0x43) = `C`, (0x68) = `h`, (0x5f) = `_`, (0x30) = `0`, (0x66) = `f`, (0x5f) = `_`
+
+- Octal values:  
+  (0142) = `b`, (0131) = `Y`, (0164) = `t`, (063) = `3`, (0163) = `s`, (0137) = `_`, (0146) = `f`, (064) = `4`
+
+- Character literals:  
+  `'a'`, `'8'`, `'c'`, `'d'`, `'8'`, `'f'`, `'7'`, `'e'`
+
+Putting it all together, the text is:
+
+```
+jU5t_4_bUnCh_0f_bYt3s_f4a8cd8f7e
+```
+
+**Flag:**
+
+```
+picoCTF{jU5t_4_bUnCh_0f_bYt3s_f4a8cd8f7e}
+```
+## vault-door-5
+
+**Approach:** The flag is given in the program's source code
+
+```
+import java.net.URLDecoder;
+import java.util.*;
+
+class VaultDoor5 {
+    public static void main(String args[]) {
+        VaultDoor5 vaultDoor = new VaultDoor5();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter vault password: ");
+        String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+        }
+    }
+
+    // Minion #7781 used base 8 and base 16, but this is base 64, which is
+    // like... eight times stronger, right? Riiigghtt? Well that's what my twin
+    // brother Minion #2415 says, anyway.
+    //
+    // -Minion #2414
+    public String base64Encode(byte[] input) {
+        return Base64.getEncoder().encodeToString(input);
+    }
+
+    // URL encoding is meant for web pages, so any double agent spies who steal
+    // our source code will think this is a web site or something, defintely not
+    // vault door! Oh wait, should I have not said that in a source code
+    // comment?
+    //
+    // -Minion #2415
+    public String urlEncode(byte[] input) {
+        StringBuffer buf = new StringBuffer();
+        for (int i=0; i<input.length; i++) {
+            buf.append(String.format("%%%2x", input[i]));
+        }
+        return buf.toString();
+    }
+
+    public boolean checkPassword(String password) {
+        String urlEncoded = urlEncode(password.getBytes());
+        String base64Encoded = base64Encode(urlEncoded.getBytes());
+        String expected = "JTYzJTMwJTZlJTc2JTMzJTcyJTc0JTMxJTZlJTY3JTVm"
+                        + "JTY2JTcyJTMwJTZkJTVmJTYyJTYxJTM1JTY1JTVmJTM2"
+                        + "JTM0JTVmJTMwJTYyJTM5JTM1JTM3JTYzJTM0JTY2";
+        return base64Encoded.equals(expected);
+    }
+}
+```
+
+Base64 encoded String:
+
+```
+JTYzJTMwJTZlJTc2JTMzJTcyJTc0JTMxJTZlJTY3JTVmJTY2JTcyJTMwJTZkJTVmJTYyJTYxJTM1JTY1JTVmJTM2JTM0JTVmJTMwJTYyJTM5JTM1JTM3JTYzJTM0JTY2
+```
+
+![image](https://github.com/user-attachments/assets/30441fdf-4102-4816-9d35-608d4e811c3f)
+
+URL encoded String:
+
+```
+%63%30%6e%76%33%72%74%31%6e%67%5f%66%72%30%6d%5f%62%61%35%65%5f%36%34%5f%30%62%39%35%37%63%34%66
+```
+
+![image](https://github.com/user-attachments/assets/ebf4ea8c-3b4c-4404-83d7-b2366069219e)
+
+Original String:
+
+```
+c0nv3rt1ng_fr0m_ba5e_64_0b957c4f
+```
+
+**Flag:**
+
+```
+picoCTF{c0nv3rt1ng_fr0m_ba5e_64_0b957c4f}
+```
+
+Tool used: https://cryptii.com/
+
+## vault-door-6
+
+**Approach:** The flag is given in the program's source code
+
+```
+import java.util.*;
+
+class VaultDoor6 {
+    public static void main(String args[]) {
+        VaultDoor6 vaultDoor = new VaultDoor6();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter vault password: ");
+        String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+        }
+    }
+
+    // Dr. Evil gave me a book called Applied Cryptography by Bruce Schneier,
+    // and I learned this really cool encryption system. This will be the
+    // strongest vault door in Dr. Evil's entire evil volcano compound for sure!
+    // Well, I didn't exactly read the *whole* book, but I'm sure there's
+    // nothing important in the last 750 pages.
+    //
+    // -Minion #3091
+    public boolean checkPassword(String password) {
+        if (password.length() != 32) {
+            return false;
+        }
+        byte[] passBytes = password.getBytes();
+        byte[] myBytes = {
+            0x3b, 0x65, 0x21, 0xa , 0x38, 0x0 , 0x36, 0x1d,
+            0xa , 0x3d, 0x61, 0x27, 0x11, 0x66, 0x27, 0xa ,
+            0x21, 0x1d, 0x61, 0x3b, 0xa , 0x2d, 0x65, 0x27,
+            0xa , 0x6c, 0x60, 0x37, 0x30, 0x60, 0x31, 0x36,
+        };
+        for (int i=0; i<32; i++) {
+            if (((passBytes[i] ^ 0x55) - myBytes[i]) != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+If A XOR B = C, then C XOR B = A
+
+![image](https://github.com/user-attachments/assets/a9225bd8-1505-4626-b24c-a2bf8b0a9e91)
+
+Original String:
+
+```
+n0t_mUcH_h4rD3r_tH4n_x0r_95be5dc
+```
+
+**Flag:**
+
+```
+picoCTF{n0t_mUcH_h4rD3r_tH4n_x0r_95be5dc}
+```
+
+## vault-door-7
+
+**Approach:** The flag is given in the program's source code
+
+```
+import java.util.*;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import java.security.*;
+
+class VaultDoor7 {
+    public static void main(String args[]) {
+        VaultDoor7 vaultDoor = new VaultDoor7();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter vault password: ");
+        String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+        }
+    }
+
+    // Each character can be represented as a byte value using its
+    // ASCII encoding. Each byte contains 8 bits, and an int contains
+    // 32 bits, so we can "pack" 4 bytes into a single int. Here's an
+    // example: if the hex string is "01ab", then those can be
+    // represented as the bytes {0x30, 0x31, 0x61, 0x62}. When those
+    // bytes are represented as binary, they are:
+    //
+    // 0x30: 00110000
+    // 0x31: 00110001
+    // 0x61: 01100001
+    // 0x62: 01100010
+    //
+    // If we put those 4 binary numbers end to end, we end up with 32
+    // bits that can be interpreted as an int.
+    //
+    // 00110000001100010110000101100010 -> 808542562
+    //
+    // Since 4 chars can be represented as 1 int, the 32 character password can
+    // be represented as an array of 8 ints.
+    //
+    // - Minion #7816
+    public int[] passwordToIntArray(String hex) {
+        int[] x = new int[8];
+        byte[] hexBytes = hex.getBytes();
+        for (int i=0; i<8; i++) {
+            x[i] = hexBytes[i*4]   << 24
+                 | hexBytes[i*4+1] << 16
+                 | hexBytes[i*4+2] << 8
+                 | hexBytes[i*4+3];
+        }
+        return x;
+    }
+
+    public boolean checkPassword(String password) {
+        if (password.length() != 32) {
+            return false;
+        }
+        int[] x = passwordToIntArray(password);
+        return x[0] == 1096770097
+            && x[1] == 1952395366
+            && x[2] == 1600270708
+            && x[3] == 1601398833
+            && x[4] == 1716808014
+            && x[5] == 1734291511
+            && x[6] == 960049251
+            && x[7] == 1681089078;
+    }
+}
+```
+
+Decimal to Hexadecimal Conversion:
+
+![image](https://github.com/user-attachments/assets/a1e4a94d-7109-46bf-8dfc-80e7b3880c45)
+
+Hex to Text Conversion:
+
+![image](https://github.com/user-attachments/assets/1541d2e3-1f35-474c-9d49-f1e93b486977)
+
+Original String:
+
+```
+A_b1t_0f_b1t_sh1fTiNg_07990cd3b6
+```
+
+**Flag:**
+
+```
+picoCTF{A_b1t_0f_b1t_sh1fTiNg_07990cd3b6}
+```
+
+Tools used:
+
+https://cryptii.com/
+
+https://www.duplichecker.com/hex-to-text.php
+
+## vault-door-8
+
+**Approach:** Reverse or undo the bits that were switched
+
+In the `scramble()` method, bits of each character in the password are scrambled through a specific sequence of bit switches. To reverse the scrambling, we need to perform these bit swaps in reverse order. This will effectively "undo" the scrambling.
+
+Source Code:
+
+```
+// These pesky special agents keep reverse engineering our source code and then
+// breaking into our secret vaults. THIS will teach those sneaky sneaks a
+// lesson.
+//
+// -Minion #0891
+
+import java.util.*;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import java.security.*;
+
+class VaultDoor8 {
+    public static void main(String args[]) {
+        Scanner b = new Scanner(System.in);
+        System.out.print("Enter vault password: ");
+        String c = b.next();
+        String f = c.substring(8, c.length() - 1);
+        VaultDoor8 a = new VaultDoor8();
+        
+        if (a.checkPassword(f)) {
+            System.out.println("Access granted.");
+        } else {
+            System.out.println("Access denied!");
+        }
+    }
+
+    public char[] scramble(String password) {
+        /* Scramble a password by transposing pairs of bits. */
+        char[] a = password.toCharArray();
+        
+        for (int b = 0; b < a.length; b++) {
+            char c = a[b];
+            c = switchBits(c, 1, 2);
+            c = switchBits(c, 0, 3);
+            /* c = switchBits(c, 14, 3); c = switchBits(c, 2, 0); */
+            c = switchBits(c, 5, 6);
+            c = switchBits(c, 4, 7);
+            c = switchBits(c, 0, 1);
+            /* d = switchBits(d, 4, 5); e = switchBits(e, 5, 6); */
+            c = switchBits(c, 3, 4);
+            c = switchBits(c, 2, 5);
+            c = switchBits(c, 6, 7);
+            a[b] = c;
+        }
+        
+        return a;
+    }
+
+    public char switchBits(char c, int p1, int p2) {
+        /* Move the bit in position p1 to position p2, and move the bit
+           that was in position p2 to position p1. Precondition: p1 < p2 */
+        char mask1 = (char) (1 << p1);
+        char mask2 = (char) (1 << p2);
+        /* char mask3 = (char)(1 << p1 << p2); mask1++; mask1--; */
+        char bit1 = (char) (c & mask1);
+        char bit2 = (char) (c & mask2);
+        /* System.out.println("bit1 " + Integer.toBinaryString(bit1));
+           System.out.println("bit2 " + Integer.toBinaryString(bit2)); */
+        char rest = (char) (c & ~(mask1 | mask2));
+        char shift = (char) (p2 - p1);
+        char result = (char) ((bit1 << shift) | (bit2 >> shift) | rest);
+        
+        return result;
+    }
+
+    public boolean checkPassword(String password) {
+        char[] scrambled = scramble(password);
+        char[] expected = {
+            0xF4, 0xC0, 0x97, 0xF0, 0x77, 0x97, 0xC0, 0xE4, 0xF0, 0x77,
+            0xA4, 0xD0, 0xC5, 0x77, 0xF4, 0x86, 0xD0, 0xA5, 0x45, 0x96,
+            0x27, 0xB5, 0x77, 0xC2, 0xD2, 0x95, 0xA4, 0xF0, 0xD2, 0xD2,
+            0xC1, 0x95
+        };
+        
+        return Arrays.equals(scrambled, expected);
+    }
+}
+```
+
+Program to undo the bit switches while reusing the `switchBits()` method
+
+```
+public class VaultDoor8 {
+    public static void main(String[] args) {
+        char[] expected = {
+            0xF4, 0xC0, 0x97, 0xF0, 0x77,
+            0x97, 0xC0, 0xE4, 0xF0, 0x77,
+            0xA4, 0xD0, 0xC5, 0x77, 0xF4,
+            0x86, 0xD0, 0xA5, 0x45, 0x96,
+            0x27, 0xB5, 0x77, 0xC2, 0xD2,
+            0x95, 0xA4, 0xF0, 0xD2, 0xD2,
+            0xC1, 0x95
+        };
+
+        char[] unscrambledPassword = unscramble(expected);
+        System.out.println("Unscrambled password: " + new String(unscrambledPassword));
+    }
+
+    public static char[] unscramble(char[] scrambledPassword) {
+        for (int b = 0; b < scrambledPassword.length; b++) {
+            char c = scrambledPassword[b];
+            c = switchBits(c, 6, 7);
+            c = switchBits(c, 2, 5);
+            c = switchBits(c, 3, 4);
+            c = switchBits(c, 0, 1);
+            c = switchBits(c, 4, 7);
+            c = switchBits(c, 5, 6);
+            c = switchBits(c, 0, 3);
+            c = switchBits(c, 1, 2);
+            scrambledPassword[b] = c;
+        }
+        return scrambledPassword;
+    }
+
+    public static char switchBits(char c, int p1, int p2) {
+        char mask1 = (char)(1 << p1);
+        char mask2 = (char)(1 << p2);
+        char bit1 = (char)(c & mask1);
+        char bit2 = (char)(c & mask2);
+        char rest = (char)(c & ~(mask1 | mask2));
+        char shift = (char)(p2 - p1);
+        return (char)((bit1 << shift) | (bit2 >> shift) | rest);
+    }
+}
+```
+
+`unscramble()` Method: This method takes each character in the scrambled expected array and applies the reverse sequence of bit swaps to retrieve the original password.
+
+Output:
+
+```
+Unscrambled password: s0m3_m0r3_b1t_sh1fTiNg_89eb3994e
+```
+
+**Flag:**
+
+```
+picoCTF{s0m3_m0r3_b1t_sh1fTiNg_89eb3994e}
+```
+
+## keygenme-py
+
+The flag is `picoCTF{1n_7h3_|<3y_of_xxxxxxxx}` where `xxxxxxxx` is the dynamic part that changes based on the username `SCHOFIELD`.
+
+The dynamic part of the flag is derived from the username SCHOFIELD by hashing it with SHA-256 and extracting specific characters from the hash.
+
+The code specifically grabs the following characters from the SHA-256 hash: hash[4], hash[5], hash[3, ]hash[6], hash[2], hash[7], hash[1], hash[8].
+
+Calculating the dynamic part of the flag:
+
+![image](https://github.com/user-attachments/assets/b117489f-c1ab-4e59-80c9-026d8b3ed624)
+
+**Flag:**
+
+```
+picoCTF{1n_7h3_|<3y_of_e584b363}
+```
+
+## Safe Opener
+
+Program:
+```
+import java.io.*;
+import java.util.*;  
+public class SafeOpener {
+    public static void main(String args[]) throws IOException {
+        BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
+        Base64.Encoder encoder = Base64.getEncoder();
+        String encodedkey = "";
+        String key = "";
+        int i = 0;
+        boolean isOpen;
+        
+
+        while (i < 3) {
+            System.out.print("Enter password for the safe: ");
+            key = keyboard.readLine();
+
+            encodedkey = encoder.encodeToString(key.getBytes());
+            System.out.println(encodedkey);
+              
+            isOpen = openSafe(encodedkey);
+            if (!isOpen) {
+                System.out.println("You have  " + (2 - i) + " attempt(s) left");
+                i++;
+                continue;
+            }
+            break;
+        }
+    }
+    
+    public static boolean openSafe(String password) {
+        String encodedkey = "cGwzYXMzX2wzdF9tM18xbnQwX3RoM19zYWYz";
+        
+        if (password.equals(encodedkey)) {
+            System.out.println("Sesame open");
+            return true;
+        }
+        else {
+            System.out.println("Password is incorrect\n");
+            return false;
+        }
+    }
+}
+```
+
+According to the program, the encoded key is `cGwzYXMzX2wzdF9tM18xbnQwX3RoM19zYWYz`, which is encoded in Base64.
+
+![image](https://github.com/user-attachments/assets/d1bcd48c-1cda-4b84-824e-f7d8fb556910)
+
+**Flag:**
+
+```
+picoCTF{pl3as3_l3t_m3_1nt0_th3_saf3}
+```
+
+## Safe Opener 2
+
+I found the flag when I opened the file with a text editor.
+
+![image](https://github.com/user-attachments/assets/30886d31-17de-4e27-9ee8-92d6b09b1869)
+
+**Flag:**
+
+```
+picoCTF{SAf3_0p3n3rr_y0u_solv3d_it_198203f7}
+```
+
+## Picker I
+
+**win() function:**
+
+```
+def win():
+  # This line will not work locally unless you create your own 'flag.txt' in
+  #   the same directory as this script
+  flag = open('flag.txt', 'r').read()
+  #flag = flag[:-1]
+  flag = flag.strip()
+  str_flag = ''
+  for c in flag:
+    str_flag += str(hex(ord(c))) + ' '
+  print(str_flag)
+```
+
+**command used:**
+
+```
+root@DhruvsPC:~# nc saturn.picoctf.net 53990
+Try entering "getRandomNumber" without the double quotes...
+==> win
+0x70 0x69 0x63 0x6f 0x43 0x54 0x46 0x7b 0x34 0x5f 0x64 0x31 0x34 0x6d 0x30 0x6e 0x64 0x5f 0x31 0x6e 0x5f 0x37 0x68 0x33 0x5f 0x72 0x30 0x75 0x67 0x68 0x5f 0x63 0x65 0x34 0x62 0x35 0x64 0x35 0x62 0x7d
+```
+**Decoding flag from hex:**
+
+![image](https://github.com/user-attachments/assets/7266edef-6061-4c30-997c-999c3f0c45ec)
+
+**Flag:**
+
+```
+picoCTF{4_d14m0nd_1n_7h3_r0ugh_ce4b5d5b}
+```
+
