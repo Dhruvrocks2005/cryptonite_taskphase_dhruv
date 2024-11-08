@@ -15,4 +15,7 @@
 |                           |                 |                   |               |
 | **[🛠 General Skills]** *(Not counted)* | **23**          | *-*               | **23**        |
 
+
+## Dashboard (with username and graph of all challenges solved):
+
 ![image](https://github.com/user-attachments/assets/4994ba87-7c93-4f1e-918c-2dcf769298a0)
