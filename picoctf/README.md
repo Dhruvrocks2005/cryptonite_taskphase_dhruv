@@ -7,15 +7,15 @@
 |:------------------------:|:-------------:|:-----------------:|:------------:|
 | **🔍 Reverse Engineering** | **14**          | *3*               | **11**        |
 | **🔍 Forensics**            | **7**           | *0*               | **7**         |
-| **🌐 Web Exploitation**     | **6**           | *1*               | **5**         |
+| **🌐 Web Exploitation**     | **7**           | *2*               | **5**         |
 | **🔒 Cryptography**         | **8**           | *3*               | **5**         |
 | **💻 Binary Exploitation**  | **3**           | *2*               | **1**         |
 |                           |                 |                   |               |
-| **🔥 Overall**             | **38**          | **9**             | **29**        |
+| **🔥 Overall**             | **39**          | **10**             | **29**        |
 |                           |                 |                   |               |
 | **[🛠 General Skills]** *(Not counted)* | **23**          | *-*               | **23**        |
 
 
 ## Dashboard (with username and graph of all challenges solved):
 
-![image](https://github.com/user-attachments/assets/124fd925-0ebf-4e5d-b8f4-0218ab23086f)
+![image](https://github.com/user-attachments/assets/bff5e405-5dd1-49e5-afca-93572894a723)
