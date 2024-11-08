@@ -332,8 +332,6 @@ This function is the program’s entry point and uses the result from `func` to 
 ### Summary
 This program essentially checks if an integer input (from `argv[1]`) leads to a specific result after several arithmetic operations. If it matches a specific expected outcome (0), you win; otherwise, you lose.
 
-To make the program print "win," the argument passed to `func` must result in `w0` being `0` after all operations. Here's a breakdown of how the calculations work in `func` and how we can find the required input:
-
 ### Breakdown of `func` Calculations
 
 The function `func` follows these steps with an initial argument `input`:
@@ -362,29 +360,11 @@ The function `func` follows these steps with an initial argument `input`:
    - Perform `w0 = w1 - w0`, which is `w0 = 90 - input`.
    - Store this final value in `sp + 28`.
 
-### Condition for "Win"
-For the program to print "win," the final result (`w0`) must be `0`. So, the equation we need to solve is:
-
-90 - input = 0
-
-Rearranging, we get:
-
-input = 90
-
-### Flag Format Conversion
-The flag format specifies a 32-bit hexadecimal representation. Converting `90` to hexadecimal:
-
+![image](https://github.com/user-attachments/assets/62d2f683-720b-42cc-abd5-fb659881e90a)
 
 90<sub>10</sub> = 5a<sub>16</sub>
 
-
-To meet the 32-bit format with zero-padding, it becomes `0000005a`.
-
-### Final Flag
-The flag is:
-
-picoCTF{0000005a}
-
+To meet the 32-bit format, it becomes `0000005a`.
 
 **Flag:**
 
