@@ -8,10 +8,10 @@
 | **🔍 Reverse Engineering** | **14**          | *3*               | **11**        |
 | **🔍 Forensics**            | **7**           | *0*               | **7**         |
 | **🌐 Web Exploitation**     | **6**           | *1*               | **5**         |
-| **🔒 Cryptography**         | **7**           | *2*               | **5**         |
+| **🔒 Cryptography**         | **8**           | *3*               | **5**         |
 | **💻 Binary Exploitation**  | **3**           | *2*               | **1**         |
 |                           |                 |                   |               |
-| **🔥 Overall**             | **37**          | **8**             | **29**        |
+| **🔥 Overall**             | **38**          | **9**             | **29**        |
 |                           |                 |                   |               |
 | **[🛠 General Skills]** *(Not counted)* | **23**          | *-*               | **23**        |
 
