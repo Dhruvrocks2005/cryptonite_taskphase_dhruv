@@ -147,3 +147,247 @@ Converting it to decimal format:
 ```
 picoCTF{549698}
 ```
+
+## ARMssembly 1
+
+**Description:**
+
+```
+For what argument does this program print `win` with variables 68, 2 and 3? File: chall_1.S Flag format: picoCTF{XXXXXXXX} -> (hex, lowercase, no 0x, and 32 bits. ex. 5614267 would be picoCTF{0055aabb})
+```
+
+**Given Program:**
+
+```
+	.arch armv8-a
+	.file	"chall_1.c"
+	.text
+	.align	2
+	.global	func
+	.type	func, %function
+func:
+	sub	sp, sp, #32
+	str	w0, [sp, 12]
+	mov	w0, 68
+	str	w0, [sp, 16]
+	mov	w0, 2
+	str	w0, [sp, 20]
+	mov	w0, 3
+	str	w0, [sp, 24]
+	ldr	w0, [sp, 20]
+	ldr	w1, [sp, 16]
+	lsl	w0, w1, w0
+	str	w0, [sp, 28]
+	ldr	w1, [sp, 28]
+	ldr	w0, [sp, 24]
+	sdiv	w0, w1, w0
+	str	w0, [sp, 28]
+	ldr	w1, [sp, 28]
+	ldr	w0, [sp, 12]
+	sub	w0, w1, w0
+	str	w0, [sp, 28]
+	ldr	w0, [sp, 28]
+	add	sp, sp, 32
+	ret
+	.size	func, .-func
+	.section	.rodata
+	.align	3
+.LC0:
+	.string	"You win!"
+	.align	3
+.LC1:
+	.string	"You Lose :("
+	.text
+	.align	2
+	.global	main
+	.type	main, %function
+main:
+	stp	x29, x30, [sp, -48]!
+	add	x29, sp, 0
+	str	w0, [x29, 28]
+	str	x1, [x29, 16]
+	ldr	x0, [x29, 16]
+	add	x0, x0, 8
+	ldr	x0, [x0]
+	bl	atoi
+	str	w0, [x29, 44]
+	ldr	w0, [x29, 44]
+	bl	func
+	cmp	w0, 0
+	bne	.L4
+	adrp	x0, .LC0
+	add	x0, x0, :lo12:.LC0
+	bl	puts
+	b	.L6
+.L4:
+	adrp	x0, .LC1
+	add	x0, x0, :lo12:.LC1
+	bl	puts
+.L6:
+	nop
+	ldp	x29, x30, [sp], 48
+	ret
+	.size	main, .-main
+	.ident	"GCC: (Ubuntu/Linaro 7.5.0-3ubuntu1~18.04) 7.5.0"
+	.section	.note.GNU-stack,"",@progbits
+```
+
+**Approach: I asked ChatGPT to explain the program to me and it explained, solved and gave me the flag**
+
+This assembly code is for the ARMv8-A architecture and contains two functions: `func` and `main`. Here’s a step-by-step breakdown of what each part is doing:
+
+### `.arch armv8-a` and `.file "chall_1.c"`
+These directives specify the architecture and source file for the assembly code.
+
+### `func` Function
+This function does some arithmetic operations and returns a result stored in `w0`. Let's look at the steps in detail.
+
+1. **Setting Up the Stack:**  
+   ```
+   sub sp, sp, #32
+   ```
+   This allocates 32 bytes on the stack for local variables.
+
+2. **Storing and Initializing Values:**
+   ```
+   str w0, [sp, 12]     ; Store the function argument w0 at offset 12 in the stack
+   mov w0, 68           ; Move the value 68 into w0
+   str w0, [sp, 16]     ; Store 68 at offset 16 in the stack
+   mov w0, 2            ; Move the value 2 into w0
+   str w0, [sp, 20]     ; Store 2 at offset 20
+   mov w0, 3            ; Move 3 into w0
+   str w0, [sp, 24]     ; Store 3 at offset 24
+   ```
+
+3. **Bit Shift Operation:**
+   ```
+   ldr w0, [sp, 20]     ; Load the value 2 from offset 20 into w0
+   ldr w1, [sp, 16]     ; Load the value 68 from offset 16 into w1
+   lsl w0, w1, w0       ; Logical shift left: w0 = 68 << 2 = 272
+   str w0, [sp, 28]     ; Store 272 at offset 28
+   ```
+
+4. **Division Operation:**
+   ```
+   ldr w1, [sp, 28]     ; Load 272 into w1
+   ldr w0, [sp, 24]     ; Load 3 into w0
+   sdiv w0, w1, w0      ; Divide 272 by 3, w0 = 272 / 3 = 90
+   str w0, [sp, 28]     ; Store the result (90) at offset 28
+   ```
+
+5. **Subtraction Operation:**
+   ```
+   ldr w1, [sp, 28]     ; Load 90 into w1
+   ldr w0, [sp, 12]     ; Load the initial input from offset 12 into w0
+   sub w0, w1, w0       ; Subtract the input from 90: w0 = 90 - input
+   str w0, [sp, 28]     ; Store the final result at offset 28
+   ```
+
+6. **Return Value:**
+   ```
+   ldr w0, [sp, 28]     ; Load the final result into w0 to be returned
+   add sp, sp, 32       ; Restore the stack pointer
+   ret                  ; Return from the function with the result in w0
+   ```
+
+### `.LC0` and `.LC1` Strings
+- `.LC0` holds `"You win!"`
+- `.LC1` holds `"You Lose :("`
+
+### `main` Function
+This function is the program’s entry point and uses the result from `func` to print either `"You win!"` or `"You Lose :("`.
+
+1. **Stack Setup for `main`:**
+   ```
+   stp x29, x30, [sp, -48]!
+   add x29, sp, 0
+   ```
+   This sets up a stack frame by saving the frame pointer and return address.
+
+2. **Parsing Input Argument:**
+   ```
+   ldr x0, [x29, 16]      ; Load the first argument pointer (argv) into x0
+   add x0, x0, 8          ; Point to the first argument string (argv[1])
+   ldr x0, [x0]           ; Dereference to get the string address
+   bl atoi                ; Convert the string to an integer
+   str w0, [x29, 44]      ; Store the integer result in offset 44
+   ```
+
+3. **Calling `func` with Argument:**
+   ```
+   ldr w0, [x29, 44]      ; Load the integer into w0
+   bl func                ; Call `func` with this integer as an argument
+   ```
+
+4. **Checking `func` Result:**
+   ```
+   cmp w0, 0              ; Compare the result with 0
+   bne .L4                ; Branch to .L4 if result is not 0
+   ```
+
+5. **Printing the Result:**
+   - If `func` returns 0, it prints `"You win!"`.
+   - Otherwise, it prints `"You Lose :("`.
+
+### Summary
+This program essentially checks if an integer input (from `argv[1]`) leads to a specific result after several arithmetic operations. If it matches a specific expected outcome (0), you win; otherwise, you lose.
+
+To make the program print "win," the argument passed to `func` must result in `w0` being `0` after all operations. Here's a breakdown of how the calculations work in `func` and how we can find the required input:
+
+### Breakdown of `func` Calculations
+
+The function `func` follows these steps with an initial argument `input`:
+
+1. **Initialize Variables:**
+   - Store `input` at `sp + 12`.
+   - Set `sp + 16` to `68`.
+   - Set `sp + 20` to `2`.
+   - Set `sp + 24` to `3`.
+
+2. **First Calculation - Left Shift:**
+   - Load `sp + 20` (`2`) into `w0`.
+   - Load `sp + 16` (`68`) into `w1`.
+   - Perform `w0 = w1 << w0`, which is `w0 = 68 << 2 = 272`.
+   - Store `272` in `sp + 28`.
+
+3. **Second Calculation - Division:**
+   - Load `272` from `sp + 28` into `w1`.
+   - Load `3` from `sp + 24` into `w0`.
+   - Perform `w0 = w1 / w0`, which is `w0 = 272 / 3 = 90`.
+   - Store `90` in `sp + 28`.
+
+4. **Final Calculation - Subtraction:**
+   - Load `90` from `sp + 28` into `w1`.
+   - Load `input` from `sp + 12` into `w0`.
+   - Perform `w0 = w1 - w0`, which is `w0 = 90 - input`.
+   - Store this final value in `sp + 28`.
+
+### Condition for "Win"
+For the program to print "win," the final result (`w0`) must be `0`. So, the equation we need to solve is:
+
+90 - input = 0
+
+Rearranging, we get:
+
+input = 90
+
+### Flag Format Conversion
+The flag format specifies a 32-bit hexadecimal representation. Converting `90` to hexadecimal:
+
+
+90<sub>10</sub> = 5a<sub>16</sub>
+
+
+To meet the 32-bit format with zero-padding, it becomes `0000005a`.
+
+### Final Flag
+The flag is:
+
+picoCTF{0000005a}
+
+
+**Flag:**
+
+```
+picoCTF{0000005a}
+```
