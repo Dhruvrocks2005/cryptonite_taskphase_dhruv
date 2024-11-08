@@ -1,4 +1,4 @@
-# Cryptograhy
+# Cryptograhy - Mandatory Challenges
 
 ## miniRSA
 
@@ -54,3 +54,109 @@ https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 https://ctf101.org/cryptography/what-is-rsa/
 
 https://www.dcode.fr/rsa-cipher
+
+# Cryptograhy - Extra Challenges
+
+## interencdec
+
+```
+YidkM0JxZGtwQlRYdHFhR3g2YUhsZmF6TnFlVGwzWVROclh6YzRNalV3YUcxcWZRPT0nCg==
+```
+
+Given string was encoded in base64.
+
+![image](https://github.com/user-attachments/assets/8cd3a341-d77e-4ad0-8836-7c57ae9c57b9)
+
+```
+b'd3BqdkpBTXtqaGx6aHlfazNqeTl3YTNrXzc4MjUwaG1qfQ=='
+```
+
+After decoding it, the result also seemed to be encoded in base64.
+
+![image](https://github.com/user-attachments/assets/c98eedf1-fecd-4443-8e70-7ade9a2cc8bd)
+
+```
+wpjvJAM{jhlzhy_k3jy9wa3k_78250hmj}
+```
+
+After decoding it, the result seemed to be encoded in caesar cypher.
+
+![image](https://github.com/user-attachments/assets/baf4d070-c728-48b5-92d2-ba60b8904ac6)
+
+After decoding it, I found the flag.
+
+**Flag:**
+
+```
+picoCTF{caesar_d3cr9pt3d_78250afc}
+```
+
+Tool used: https://cryptii.com/
+
+## Mod 26
+
+ROT13 is a simple substitution cipher that shifts each letter 13 positions in the alphabet. Applying ROT13 again on the encoded text will return the original text.
+
+**Encoded text:**
+
+```
+cvpbPGS{arkg_gvzr_V'yy_gel_2_ebhaqf_bs_ebg13_nSkgmDJE}
+```
+
+![image](https://github.com/user-attachments/assets/9b4d23a6-23c4-4fdb-8468-ec08090fb06d)
+
+**Decoded text:**
+
+```
+picoCTF{next_time_I'll_try_2_rounds_of_rot13_aFxtzQWR}
+```
+
+**Flag:**
+
+```
+picoCTF{next_time_I'll_try_2_rounds_of_rot13_aFxtzQWR}
+```
+
+## substitution0
+
+Tool used: https://planetcalc.com/8047/
+
+![image](https://github.com/user-attachments/assets/dee7d8c9-de6e-47b3-97ae-65798671b63b)
+
+**Flag:**
+
+```
+picoCTF{5UB5717U710N_3V0LU710N_357BF9FF}
+```
+
+## substitution1
+
+Tool used: https://planetcalc.com/8047/
+
+![image](https://github.com/user-attachments/assets/505e2687-15d6-4ad2-8d0d-8c77e8466707)
+
+![image](https://github.com/user-attachments/assets/9ca576c8-f25d-4eb5-ae75-e4d5a5db9799)
+
+![image](https://github.com/user-attachments/assets/a6cfee76-a3f6-4e5a-bb6d-2812f2265b64)
+
+![image](https://github.com/user-attachments/assets/ab6c65a4-b5a0-42a8-848f-c7cce135fb3a)
+
+There were no instances of `J`, `Z`, `X` or `Q` in the decrypted paragraph so the flag could be calculated with permutation and combination but even that was not required since it was obvious which character('Q') would be used as the flag is in leetspeak.
+
+**Flag:**
+
+```
+picoCTF{FR3QU3NCY_4774CK5_4R3_C001_7AA384BC}
+```
+
+## substitution2
+
+Tool used: https://planetcalc.com/8047/
+
+![image](https://github.com/user-attachments/assets/74a92857-baaf-46e9-8fdc-a4fbe81a4e1f)
+
+**Flag:**
+
+```
+picoCTF{N6R4M_4N41Y515_15_73D10U5_8E1BF808}
+```
