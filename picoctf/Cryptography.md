@@ -1,5 +1,139 @@
 # Cryptograhy - Mandatory Challenges
 
+## C3
+
+**Description:**
+
+```
+This is the Custom Cyclical Cipher!
+Download the ciphertext here.
+Download the encoder here.
+Enclose the flag in our wrapper for submission. If the flag was "example" you would submit "picoCTF{example}".
+```
+<br>
+
+**Given encoder program:**
+
+```
+import sys
+chars = ""
+from fileinput import input
+for line in input():
+  chars += line
+
+lookup1 = "\n \"#()*+/1:=[]abcdefghijklmnopqrstuvwxyz"
+lookup2 = "ABCDEFGHIJKLMNOPQRSTabcdefghijklmnopqrst"
+
+out = ""
+
+prev = 0
+for char in chars:
+  cur = lookup1.index(char)
+  out += lookup2[(cur - prev) % 40]
+  prev = cur
+
+sys.stdout.write(out)
+```
+<br>
+
+**Given ciphertext:**
+
+```
+DLSeGAGDgBNJDQJDCFSFnRBIDjgHoDFCFtHDgJpiHtGDmMAQFnRBJKkBAsTMrsPSDDnEFCFtIbEDtDCIbFCFtHTJDKerFldbFObFCFtLBFkBAAAPFnRBJGEkerFlcPgKkImHnIlATJDKbTbFOkdNnsgbnJRMFnRBNAFkBAAAbrcbTKAkOgFpOgFpOpkBAAAAAAAiClFGIPFnRBaKliCgClFGtIBAAAAAAAOgGEkImHnIl
+```
+<br>
+
+**Approach:** 
+
+The script uses lookup1 to find the index of each character in the ciphertext and maps it to lookup2, using a dynamic offset (prev).
+
+To decrypt, we need to reverse the process: for each character in lookup2, find the index, adjust by prev (moving backward), then map it back to lookup1.
+
+Using the same lookup1 and lookup2, iterate backward through the ciphertext to reveal the original message.
+
+<br>
+
+**Script to reverse the cypher:**
+
+```
+ciphertext = "DLSeGAGDgBNJDQJDCFSFnRBIDjgHoDFCFtHDgJpiHtGDmMAQFnRBJKkBAsTMrsPSDDnEFCFtIbEDtDCIbFCFtHTJDKerFldbFObFCFtLBFkBAAAPFnRBJGEkerFlcPgKkImHnIlATJDKbTbFOkdNnsgbnJRMFnRBNAFkBAAAbrcbTKAkOgFpOgFpOpkBAAAAAAAiClFGIPFnRBaKliCgClFGtIBAAAAAAAOgGEkImHnIl"
+
+lookup1 = "\n \"#()*+/1:=[]abcdefghijklmnopqrstuvwxyz"
+lookup2 = "ABCDEFGHIJKLMNOPQRSTabcdefghijklmnopqrst"
+
+decrypted_text = ""
+
+prev = 0
+for char in ciphertext:
+    # Find the index of `char` in lookup2 (as it's encrypted)
+    cur = lookup2.index(char)
+    # Reverse the cyclical shift based on `prev`
+    original_index = (cur + prev) % 40
+    # Append the character from lookup1 at the decrypted index
+    decrypted_text += lookup1[original_index]
+    # Update `prev` to current character's index in lookup1 for next iteration
+    prev = original_index
+
+# Print the decrypted message
+print(decrypted_text)
+```
+<br>
+
+![image](https://github.com/user-attachments/assets/1ab7028f-3eaf-49c5-809f-e4dce7d8350f)
+
+<br>
+
+**Output:**
+
+```
+#asciiorder
+#fortychars
+#selfinput
+#pythontwo
+
+chars = ""
+from fileinput import input
+for line in input():
+    chars += line
+b = 1 / 1
+
+for i in range(len(chars)):
+    if i == b * b * b:
+        print chars[i] #prints
+        b += 1 / 1
+```
+<br>
+
+The program would evaluate indices at b<sup>3</sup> = 1, 8, 27, 64, ... as it cubes the integer values of `b`.
+
+The program will print characters from positions 1, 8, 27, ...
+
+It essentially extracts characters from the input at cubic indices.
+
+The `selfinput` comment given indicates that the above output will be the input for the program.
+
+ <br>
+
+![image](https://github.com/user-attachments/assets/23e73984-7c7c-41a9-9a5d-e3d98046b8fa)
+
+<br>
+
+I fixed the code a bit (brackets were missing from print statement), then ran it and got the output as `adlibs`.
+
+<br>
+
+**Incorrect Tangents:**
+
+Initially, I didn't notice the `selfinput` comment, so I tried to provide the ciphertext, lookup1 and lookup2 as input for the second program. That did not give me the correct flag so I analyzed everything and noticed the `selfinput` then.
+
+<br>
+
+**Flag:**
+
+```
+picoCTF{adlibs}
+```
+
 ## miniRSA
 
 **Given:**
