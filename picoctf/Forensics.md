@@ -102,6 +102,44 @@ picoCTF{mm15_f7w!}
 picoCTF{mm15_f7w!}
 ```
 
+## extensions
+
+**Description:**
+
+```
+This is a really weird text file TXT? Can you find the flag?
+```
+
+**Approach:**
+
+Opened the file in a text editor, it looked like a png. Then I opened the file in a hex editor and confirmed that it has the corect PNG header, saved it as a png and obtained the flag when I opened the png.
+
+![image](https://github.com/user-attachments/assets/bf971cf5-0d43-4ed6-a556-007ff3f55023)
+
+<img width="849" alt="flages" src="https://github.com/user-attachments/assets/61222e7a-e272-4b47-8f97-ac672fd14011">
+
+**Tool Used:** https://hexed.it/
+
+**Flag:**
+
+```
+picoCTF{now_you_know_about_extensions}
+```
+
+## What Lies Within
+
+**Approach:** I used an online Steganography tool to decode the image and found the flag
+
+![image](https://github.com/user-attachments/assets/94051f07-a34b-4f8c-adbc-d325873188c0)
+
+**Flag:**
+
+```
+picoCTF{h1d1ng_1n_th3_b1t5}
+```
+
+**Resource used:** https://stylesuxx.github.io/steganography/
+
 ## Packets Primer
 
 Download the packet capture file and use packet analysis software to find the flag. - `Wireshark`
