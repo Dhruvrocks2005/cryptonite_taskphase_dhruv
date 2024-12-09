@@ -11,6 +11,8 @@ To begin, a virtual machine and AttackBox were utilized for the analysis.
 
 note: burp suite open browser not working - need to check that again
 
+reference: https://portswigger.net/burp/documentation/desktop/external-browser-config/browser-config-firefox
+
 ---
 
 ## Answers to the given questions:
