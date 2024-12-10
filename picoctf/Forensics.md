@@ -9,6 +9,42 @@
 - https://play.picoctf.org/playlists/16?m=127
 - https://www.youtube.com/watch?v=J-wgivK4X-A&t=9s&ab_channel=picoCTF%2CCarnegieMellonUniversity
 
+## m00nwalk
+
+```
+Description:
+Decode this message from the moon. (A message.wav file is downloaded)
+
+Hints:
+1 How did pictures from the moon landing get sent back to Earth?
+2 What is the CMU mascot?, that might help select a RX option
+```
+
+**Approach:**
+
+The challenge involves decoding a message from a WAV file and references the moon landing's communication methods and the CMU mascot, which is Scotty.
+
+### Understanding the Hints
+
+1. **Moon Landing Communication**:
+   - Moon landing signals were sent back to Earth using radio signals.
+   - Audio files could be encoded with data like images or messages using techniques like **SSTV (Slow Scan Television)**, often used for transmitting images over radio frequencies.
+
+2. **CMU Mascot**:
+   - The mascot of Carnegie Mellon University (CMU) is Scotty, a Scottish Terrier. This  might imply using the `Scottie 1` mode.
+
+
+### Decoding the SSTV Signal
+
+Use RX-SSTV or QSSTV - to do
+
+
+**Flag:**
+
+```
+picoCTF{}
+```
+
 # Forensics - Extra Challenges
 
 ## Secret of the Polyglot
