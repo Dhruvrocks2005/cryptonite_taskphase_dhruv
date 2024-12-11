@@ -2,9 +2,53 @@
 
 ## Trivial Flag Transfer Protocol
 
+Opened the given file using `Wireshark`.
+
+![image](https://github.com/user-attachments/assets/14420fdf-dc56-496d-a9ae-7092434f1aea)
+
+![image](https://github.com/user-attachments/assets/b6be4dd4-768b-487d-9de2-018428cc9c58)
+
+The following files were extracted: `instructions.txt`, `plan`, `program.deb` and 3 images which seem to be unrelated.
+
+instructions.txt:
+
+```
+GSGCQBRFAGRAPELCGBHEGENSSVPFBJRZHFGQVFTHVFRBHESYNTGENAFSRE.SVTHERBHGNJNLGBUVQRGURSYNTNAQVJVYYPURPXONPXSBEGURCYNA
+```
+
+This turned out to be simple ROT13 cypher.
+
+```
+TFTPDOESNTENCRYPTOURTRAFFICSOWEMUSTDISGUISEOURFLAGTRANSFER.FIGUREOUTAWAYTOHIDETHEFLAGANDIWILLCHECKBACKFORTHEPLAN
+```
+
+The `plan` file conatined this:
+
+```
+VHFRQGURCEBTENZNAQUVQVGJVGU-QHRQVYVTRAPR.PURPXBHGGURCUBGBF
+```
+
+This also turned out to be ROT13.
+
+```
+IUSEDTHEPROGRAMANDHIDITWITH-DUEDILIGENCE.CHECKOUTTHEPHOTOS
+```
+
+I then ran `sudo dpkg -i program.deb` and found that it is steghide but it was broken/obsolete so I used an online tool instead - https://futureboy.us/stegano/decinput.html 
+
+The password was `DUEDILIGENCE` as given in `plan`. I ran all 3 images through the Steganographic Decoder and found the flag in `picture3`.
+
+![image](https://github.com/user-attachments/assets/d1b04941-61b4-4d76-931b-4c59d95b18f3)
+
+**Flag:**
+
+```
+picoCTF{h1dd3n_1n_pLa1n_51GHT_18375919}
+```
 
 **Resources Used:**
 - Wireshark
+- https://futureboy.us/stegano/decinput.html
 - `Forensics in CTF's` playlist on `picoCTF` - https://play.picoctf.org/playlists/16?m=114
 - https://play.picoctf.org/playlists/16?m=127
 - https://www.youtube.com/watch?v=J-wgivK4X-A&t=9s&ab_channel=picoCTF%2CCarnegieMellonUniversity
