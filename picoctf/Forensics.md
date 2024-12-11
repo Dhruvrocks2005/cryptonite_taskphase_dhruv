@@ -9,6 +9,89 @@
 - https://play.picoctf.org/playlists/16?m=127
 - https://www.youtube.com/watch?v=J-wgivK4X-A&t=9s&ab_channel=picoCTF%2CCarnegieMellonUniversity
 
+## tunn3l v1s10n
+
+Received a file named `tunn3l_v1s10n`, which doesn't open. Flag not found upon searching in text editor.
+
+ran `file tunn3l_v1s10n`
+
+![image](https://github.com/user-attachments/assets/96f06b54-454e-44dd-bb04-e739830a7154)
+
+ran `exiftool tunn3l_v1s10n`
+
+![image](https://github.com/user-attachments/assets/26c0d282-3941-4325-bf54-1b390e5c055f)
+
+```
+File Type: BMP (bitmap)
+Image Width: 1134
+Image Height: 306
+Image Length(size): 2893400
+```
+
+Tried to open the file after changing the file extention to `.bmp` but to no avail.
+
+![image](https://github.com/user-attachments/assets/3cb57bc1-d3df-4195-87e4-a4e6eb7e6272)
+
+Opened the file in a hex editor (https://hexed.it/) to check and fix file header.
+
+![image](https://github.com/user-attachments/assets/090a308d-ed2b-4ee6-a28b-29c3cc13c1ff)
+
+Matched it with the required format and found discrepancies.
+
+![image](https://github.com/user-attachments/assets/41855c43-3bd3-4df1-988e-4a88e9a44d41)
+
+The DIB header should be `28 00 00 00`	(40 bytes). Replaced `BA D0` by `28 00`, and saved the image with a BMP extension(.bmp).
+
+![image](https://github.com/user-attachments/assets/d4cecdc6-edd7-4084-808c-93ac83189f5c)
+
+Did not find the correct flag so something is still wrong.
+
+![image](https://github.com/user-attachments/assets/45c8651f-462d-4925-bc1a-6dd70bdfc1c7)
+
+I tried to modify the `Offset where the pixel array (bitmap data) can be found`. I changed it to `36 00 00 00` (54 bytes) like in the example.
+
+![image](https://github.com/user-attachments/assets/566250c6-f880-488d-8622-cf57395e95c6)
+
+The image was still incomplete.
+
+![image](https://github.com/user-attachments/assets/9f557941-d19a-46d8-a2bc-b7ccf9925c1e)
+
+Image should be bigger-image height seems less.
+
+Number of bits per pixel = 24 bits = 3 bytes
+
+![image](https://github.com/user-attachments/assets/6047e4cb-2078-4f23-b5ba-77183089bcc0)
+
+![image](https://github.com/user-attachments/assets/37352d79-3c1e-444a-a9cd-2c221871a493)
+
+1134 * 306 * 3 ≠ 2893400
+
+New image height = 2893400/(3*1134) = 850.5
+
+(850)<sub>10</sub> = (0352)<sub>16</sub> 
+
+Tried putting 850 as new image height:
+
+![image](https://github.com/user-attachments/assets/8d885765-55fd-489d-ad9c-27085b34ad93)
+
+This did not work because it is supposed to be in `little-endian` format (i.e. least-significant byte first).
+
+![image](https://github.com/user-attachments/assets/766c0017-ba8e-4870-988c-bfc3c1846110)
+
+It worked after fixing that.
+
+![image](https://github.com/user-attachments/assets/0eb79963-66ed-44d2-9c08-efe411947699)
+
+![image](https://github.com/user-attachments/assets/803ef8d7-6683-4b69-9752-59acee77e890)
+
+**Reference:** https://en.wikipedia.org/wiki/BMP_file_format
+
+**Flag:**
+
+```
+picoCTF{qu1t3_a_v13w_2020}
+```
+
 ## m00nwalk
 
 ```
