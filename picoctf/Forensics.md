@@ -151,8 +151,6 @@ Hints:
 
 The challenge involves decoding a message from a WAV file and references the moon landing's communication methods and the CMU mascot, which is Scotty.
 
-### Understanding the Hints
-
 1. **Moon Landing Communication**:
    - Moon landing signals were sent back to Earth using radio signals.
    - Audio files could be encoded with data like images or messages using techniques like **SSTV (Slow Scan Television)**, often used for transmitting images over radio frequencies.
@@ -163,14 +161,91 @@ The challenge involves decoding a message from a WAV file and references the moo
 
 ### Decoding the SSTV Signal
 
-Use RX-SSTV or QSSTV - to do
+Tried to use `RX-SSTV` to decode the signal but it wasn't working properly so had to switch to `QSSTV`.
 
+Referred to this article for the procedure: [ How to convert (decode) a Slow-Scan Television transmissions (SSTV) audio file to images using QSSTV in Ubuntu 18.04](https://ourcodeworld.com/articles/read/956/how-to-convert-decode-a-slow-scan-television-transmissions-sstv-audio-file-to-images-using-qsstv-in-ubuntu-18-04)
+
+In accordance with the above [procedure](https://ourcodeworld.com/articles/read/956/how-to-convert-decode-a-slow-scan-television-transmissions-sstv-audio-file-to-images-using-qsstv-in-ubuntu-18-04), commands used:
+
+```
+sudo apt-get install qt5-default libopenjp2-7-dev libpulse-dev libv4l-dev libasound2-dev libgtk-3-dev libfftw3-dev
+sudo apt-get install pavucontrol
+sudo apt-get install qsstv
+qsstv
+pactl load-module module-null-sink sink_name=virtual-cable
+pavucontrol
+paplay -d virtual-cable message.wav
+pactl list short modules
+pactl unload-module 22
+```
+
+- Installed required libraries.
+- Installed pavucontrol.
+  
+![image](https://github.com/user-attachments/assets/e6b32eab-5290-4980-badf-1c6db7496a89)
+
+- Installed qsstv.
+
+-  Loaded a PulseAudio module `module-null-sink` and named it as `virtual-cable`.
+
+![image](https://github.com/user-attachments/assets/337305c8-e7a2-471f-83fc-a8cc395ce772)
+
+- Ran `pavucontrol`, and went to the `Output Devices` tab to verify that we have the `Null Output` device.
+  
+![image](https://github.com/user-attachments/assets/7a63a457-a9a6-4595-8c59-145372fbca58)
+
+- Ran `qsstv` and specified that the QSSTV should capture the audio from our Null Output (in the pavucontrol GUI, in the `Recording` tab).
+  
+![image](https://github.com/user-attachments/assets/caeb1b8a-48e1-4690-8171-37ba621d4a6d)
+
+- Selected `Scottie 1` as QSSTV's mode according to the `CMU Mascot` hint.
+
+- Ran `paplay -d virtual-cable message.wav` to play the audio file.
+
+![image](https://github.com/user-attachments/assets/e9b4b844-c2e4-4209-a544-40aadf47d3f2)
+
+- Note: Bash was not allowing me to run commands while another was ongoing, so I had to use 3 terminals, one to launch `qsstv`, one to launch `pavucontrol` and one to play the audio file.
+
+![image](https://github.com/user-attachments/assets/60f3a31d-f254-407c-bd92-b8873a2b9a2b)
+
+![image](https://github.com/user-attachments/assets/28ab12c1-8e7d-46ff-8fed-6302ea7db1e6)
+
+![image](https://github.com/user-attachments/assets/7946e123-9edc-4f58-b058-f17158ec6477)
+
+- Played around with qsstv settings until I received the flag using trial and error.
+
+- Needed to turn on `Auto Slant` mode, without which, incomplete parts of the image were forming instead of the complete image.
+
+![image](https://github.com/user-attachments/assets/0f1ee667-8567-489a-a123-935f647455f9)
+
+![image](https://github.com/user-attachments/assets/4e485d78-6e32-4f93-81fd-c03e36ebec5d)
+
+- Resaturated audio in the system by unloading the `module-null-sink`.
+
+![image](https://github.com/user-attachments/assets/09517117-692b-4ea5-b4bf-1a41b3fb553a)
+
+![image](https://github.com/user-attachments/assets/cfc61553-117f-48f6-a2db-5947d25a8e47)
+
+- The `virtual-cable` had an identifier of 22 in my case.
+  
+![image](https://github.com/user-attachments/assets/be6a0b76-1282-4dfb-9da8-f261bd5d337e)
+
+**Decoded Image:**
+
+![S1_20241212_195907](https://github.com/user-attachments/assets/ef103658-0792-4f4d-ae2d-fc457c22b6ef)
 
 **Flag:**
 
 ```
-picoCTF{}
+picoCTF{beep_boop_im_in_space}
 ```
+
+**Reference used:**  https://ourcodeworld.com/articles/read/956/how-to-convert-decode-a-slow-scan-television-transmissions-sstv-audio-file-to-images-using-qsstv-in-ubuntu-18-04
+
+**Tangents:** 
+- Tried to used `RX-SSTV` first but it didn't give me the desired output. Switched to `QSSTV` but the same thing happened there and that was when I realized that manually playing the audio would not work and upon further research, found out that we had to use `virtual-cable`/`null_sink`
+- Some dependencies/libraries/packages for `qsstv` were broken or obsolete so time was wasted there
+- Figuring out the correct settings for `QSSTV` (`Auto Slant` mode) also required a bit of trial and error
 
 # Forensics - Extra Challenges
 
