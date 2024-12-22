@@ -9,10 +9,6 @@ To begin, a virtual machine and AttackBox were utilized for the analysis.
 
 ![image](https://github.com/user-attachments/assets/31f23973-daad-40ac-8e02-e5faa5daaf0f)
 
-note: burp suite open browser not working - need to check that again
-
-reference: https://portswigger.net/burp/documentation/desktop/external-browser-config/browser-config-firefox
-
 ---
 
 ## Answers to the given questions:
@@ -20,6 +16,7 @@ reference: https://portswigger.net/burp/documentation/desktop/external-browser-c
 What is the flag discovered after navigating through the wishes?
 
 ```
+THM{Brut3f0rc1n6_mY_w4y}
 ```
 
 
