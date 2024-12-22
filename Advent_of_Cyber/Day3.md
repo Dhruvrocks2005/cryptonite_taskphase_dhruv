@@ -96,3 +96,4 @@ Received the flag
 
 ---
 
+![image](https://github.com/user-attachments/assets/ca35e9a2-0979-4c08-9694-e7ae47382cbc)
