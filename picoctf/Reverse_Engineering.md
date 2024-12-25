@@ -1272,3 +1272,72 @@ Upon converting the given hex values, I received the flag:
 ```
 picoCTF{ASCII_IS_EASY_7BCD971D}
 ```
+
+## Bit-O-Asm-1
+
+**Description:**
+
+```
+Can you figure out what is in the eax register? Put your answer in the picoCTF flag format: picoCTF{n} where n is the contents of the eax register in the decimal number base. If the answer was 0x11 your flag would be picoCTF{17}.
+```
+
+**Assembly Dump:**
+
+```
+<+0>:     endbr64 
+<+4>:     push   rbp
+<+5>:     mov    rbp,rsp
+<+8>:     mov    DWORD PTR [rbp-0x4],edi
+<+11>:    mov    QWORD PTR [rbp-0x10],rsi
+<+15>:    mov    eax,0x30
+<+20>:    pop    rbp
+<+21>:    ret
+```
+
+The value in the `eax` register is `0x30`.
+
+The value `0x30` is the hexadecimal representation of the number `48` in decimal.
+
+Therefore, the value in the `eax` register is `48`.
+
+**Flag:**
+
+```
+picoCTF{48}
+```
+
+## Bit-O-Asm-1
+
+**Description:**
+
+```
+Can you figure out what is in the eax register? Put your answer in the picoCTF flag format: picoCTF{n} where n is the contents of the eax register in the decimal number base. If the answer was 0x11 your flag would be picoCTF{17}.
+```
+
+**Assembly Dump:**
+
+```
+<+0>:     endbr64 
+<+4>:     push   rbp
+<+5>:     mov    rbp,rsp
+<+8>:     mov    DWORD PTR [rbp-0x14],edi
+<+11>:    mov    QWORD PTR [rbp-0x20],rsi
+<+15>:    mov    DWORD PTR [rbp-0x4],0x9fe1a
+<+22>:    mov    eax,DWORD PTR [rbp-0x4]
+<+25>:    pop    rbp
+<+26>:    ret
+```
+
+The value in the `eax` register is `0x9fe1a`. (`DWORD PTR [rbp-0x4]` points to `0x9fe1a`)
+
+(9FE1A)₁₆ = (9 × 16⁴) + (15 × 16³) + (14 × 16²) + (1 × 16¹) + (10 × 16⁰) = (654874)₁₀
+
+Therefore, the value in the `eax` register is `654874`.
+
+**Flag:**
+
+```
+picoCTF{654874}
+```
+
+
