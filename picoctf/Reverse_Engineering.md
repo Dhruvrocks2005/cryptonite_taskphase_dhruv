@@ -1245,3 +1245,30 @@ picoCTF{f1l73r5_f41l_c0d3_r3f4c70r_m1gh7_5ucc33d_95d44590}
 ```
 
 
+## ASCII FTW
+
+**Description:**
+
+```
+This program has constructed the flag using hex ascii values. Identify the flag text by disassembling the program.
+```
+
+As mentioned in the description, I disassembled the program:
+
+```
+gdb /mnt/c/Users/dhruv/Downloads/asciiftw
+disassemble main
+```
+
+![image](https://github.com/user-attachments/assets/94e3e9b6-1f25-44f0-b26b-992bfcd82733)
+![image](https://github.com/user-attachments/assets/1848200c-9875-4844-a626-cea4b060aa67)
+
+Upon converting the given hex values, I received the flag:
+
+![image](https://github.com/user-attachments/assets/cfdfae50-11d7-4616-abbe-f262bce83488)
+
+**Flag:**
+
+```
+picoCTF{ASCII_IS_EASY_7BCD971D}
+```
