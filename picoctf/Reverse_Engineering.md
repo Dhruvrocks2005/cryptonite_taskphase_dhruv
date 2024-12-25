@@ -1018,6 +1018,55 @@ Calculating the dynamic part of the flag:
 picoCTF{1n_7h3_|<3y_of_e584b363}
 ```
 
+## Transformation
+
+**Description:**
+
+```
+I wonder what this really is... enc ''.join([chr((ord(flag[i]) << 8) + ord(flag[i + 1])) for i in range(0, len(flag), 2)])
+```
+
+**Operation**:
+
+   - `ord(flag[i])`: Converts the character at position `i` to its Unicode code point.
+   - `ord(flag[i + 1])`: Converts the next character to its Unicode code point.
+   - `(ord(flag[i]) << 8)`: Shifts the first character's code point 8 bits to the left.
+   - `+ ord(flag[i + 1])`: Adds the second character's code point to the shifted value.
+   - `chr(...)`: Converts this combined value back to a character.
+
+The loop processes the `flag` in chunks of 2 characters, producing one encoded character for each pair.
+
+
+**Decoding the `enc` String**:
+
+To decode it, we need to reverse the process:
+1. Split each character in `enc` back into two original flag characters.
+2. For a given encoded character `c`:
+   - `val = ord(c)`: Get its Unicode code point.
+   - `char1 = chr(val >> 8)`: Extract the first character by shifting 8 bits to the right. Extracts the upper 8 bits.
+   - `char2 = chr(val & 0xFF)`: Extract the second character using a bitwise AND with `0xFF`. Extracts the lower 8 bits.
+
+**Program to decode:**
+
+```
+enc = "灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸彥ㄴㅡて㝽"
+
+decoded_flag = ''
+for c in enc:
+    val = ord(c)
+    char1 = chr(val >> 8)  
+    char2 = chr(val & 0xFF)  
+    decoded_flag += char1 + char2
+
+print("Decoded flag:", decoded_flag)
+```
+
+**Flag:**
+
+```
+picoCTF{16_bits_inst34d_of_8_e141a0f7}
+```
+
 ## Safe Opener
 
 Program:
