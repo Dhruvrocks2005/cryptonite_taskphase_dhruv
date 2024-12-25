@@ -3,22 +3,32 @@
 **Connection to the Machine:**
 To begin, a virtual machine and AttackBox were utilized for the analysis.
 
+## Approach:
+
+- To prevent any DNS logs, we had to resolve the Gift Scheduler’s FQDN locally on our machine:
+
+```
 echo "10.10.62.20 gift-scheduler.thm" >> /etc/hosts
 cat /etc/hosts
+```
 
 ![image](https://github.com/user-attachments/assets/05e9df60-a98d-4a3c-85d0-5288b977ba89)
 
-https://gift-scheduler.thm
+- Navigated to https://gift-scheduler.thm. I could view the Certificate on the warning page.
 
+- In Burp Suite, under proxy settings, added a new proxy listener with the listening port set to `8080` and the Specific address to the IP address of our AttackBox.
+
+- Setting our machine as a gateway for all other Wareville’s machines:
+
+```
 echo "10.10.47.174 wareville-gw" >> /etc/hosts
 cd ~/Rooms/AoC2024/Day14
 ./route-elf-traffic.sh 
+```
 
 ![image](https://github.com/user-attachments/assets/28f0d51b-5e24-4c37-b2a8-6659070566c0)
 
-
-
-
+- In the HTTP History tab in Burp Suite, we can see the POST requests containing clear-text credentials for the Gift Scheduler website.
 
 ---
 
@@ -74,3 +84,5 @@ THM{AoC-h0wt0ru1nG1ftD4y}
 
 ---
 
+
+![image](https://github.com/user-attachments/assets/d99dcd77-671e-422a-8b73-bba4c1d8c47f)
