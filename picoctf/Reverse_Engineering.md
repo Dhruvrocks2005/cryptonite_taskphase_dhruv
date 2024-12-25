@@ -1306,7 +1306,7 @@ Therefore, the value in the `eax` register is `48`.
 picoCTF{48}
 ```
 
-## Bit-O-Asm-1
+## Bit-O-Asm-2
 
 **Description:**
 
@@ -1340,4 +1340,97 @@ Therefore, the value in the `eax` register is `654874`.
 picoCTF{654874}
 ```
 
+## Bit-O-Asm-3
 
+**Description:**
+
+```
+Can you figure out what is in the eax register? Put your answer in the picoCTF flag format: picoCTF{n} where n is the contents of the eax register in the decimal number base. If the answer was 0x11 your flag would be picoCTF{17}.
+```
+
+**Assembly Dump:**
+
+```
+<+0>:     endbr64 
+<+4>:     push   rbp
+<+5>:     mov    rbp,rsp
+<+8>:     mov    DWORD PTR [rbp-0x14],edi
+<+11>:    mov    QWORD PTR [rbp-0x20],rsi
+<+15>:    mov    DWORD PTR [rbp-0xc],0x9fe1a
+<+22>:    mov    DWORD PTR [rbp-0x8],0x4
+<+29>:    mov    eax,DWORD PTR [rbp-0xc]
+<+32>:    imul   eax,DWORD PTR [rbp-0x8]
+<+36>:    add    eax,0x1f5
+<+41>:    mov    DWORD PTR [rbp-0x4],eax
+<+44>:    mov    eax,DWORD PTR [rbp-0x4]
+<+47>:    pop    rbp
+<+48>:    ret
+```
+
+
+- At `<+29>`,`eax` is set to `0x9fe1a`.
+
+   So, `eax = 0x9fe1a = 654874`.
+
+- At `<+32>`, `eax` is multiplied by the value at `[rbp-0x8]`.
+
+   `eax = 0x9fe1a * 0x4 = 654874 * 4 = 2619496`.
+
+-  At `<+36>`, `0x1f5` (501 in decimal) is added to `eax`.
+
+   `eax = 2619496 + 501 = 2619997`.
+
+
+**Flag:**
+
+```
+picoCTF{2619997}
+```
+
+## Bit-O-Asm-4
+
+**Description:**
+
+```
+Can you figure out what is in the eax register? Put your answer in the picoCTF flag format: picoCTF{n} where n is the contents of the eax register in the decimal number base. If the answer was 0x11 your flag would be picoCTF{17}.
+```
+
+**Assembly Dump:**
+
+```
+<+0>:     endbr64 
+<+4>:     push   rbp
+<+5>:     mov    rbp,rsp
+<+8>:     mov    DWORD PTR [rbp-0x14],edi
+<+11>:    mov    QWORD PTR [rbp-0x20],rsi
+<+15>:    mov    DWORD PTR [rbp-0x4],0x9fe1a
+<+22>:    cmp    DWORD PTR [rbp-0x4],0x2710
+<+29>:    jle    0x55555555514e <main+37>
+<+31>:    sub    DWORD PTR [rbp-0x4],0x65
+<+35>:    jmp    0x555555555152 <main+41>
+<+37>:    add    DWORD PTR [rbp-0x4],0x65
+<+41>:    mov    eax,DWORD PTR [rbp-0x4]
+<+44>:    pop    rbp
+<+45>:    ret
+```
+
+
+- <+15>: `DWORD PTR [rbp-0x4]` is set to `0x9fe1a`.
+
+   So, `DWORD PTR [rbp-0x4] = 0x9fe1a = 654874`.
+
+- <+22>: It compares the value at `[rbp-0x4]` to `0x2710`.
+  
+  `654874` > `10000` so `0x9fe1a` > `0x2710`, hence, the instruction at <+31> is executed and <+37> is skipped.
+
+- <+31>: It subtracts `0x65` from `0x9fe1a`.
+  
+  `0x9fe1a` - `0x65` = `654874` - `101` = `654773`
+
+- <+41>: The value in the `eax` register is `654773`. (`DWORD PTR [rbp-0x4]` points to `654773`)
+
+**Flag:**
+
+```
+picoCTF{654773}
+```
