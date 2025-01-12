@@ -1,14 +1,7 @@
 # Day 18: I could use a little AI interaction!
 
-**Connection to the Machine:**
-To begin, a virtual machine and AttackBox were utilized for the analysis.
 
-http://10.10.175.130/
-
-tcpdump -ni ens5 icmp
-
-
-
+This challenge is incomplete because the AI wasn't getting hosted on my laptop in time. The attackbox was getting expired before AI came online.
 
 
 
