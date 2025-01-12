@@ -1,5 +1,7 @@
 # Hunting License
 
+There was a questionnaire when I connected to the given remote instance.
+
 I was given a binary called `license`:
 
 ![image](https://github.com/user-attachments/assets/3bfe36d4-1ec7-470d-9dc7-ea08c9e1eff9)
@@ -38,6 +40,8 @@ First: PasswordNumeroUno
 Second: P4ssw0rdTw0
 Third: ThirdAndFinal!!!
 ```
+
+Answering the questionnaire:
 
 ![image](https://github.com/user-attachments/assets/57e0a2a9-1156-46aa-a81e-b01bda08e346)
 
