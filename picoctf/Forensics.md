@@ -1045,17 +1045,3 @@ picoCTF{trust_but_verify_c6c8b911}
 **Knowledge Gained:**
 
 Usage of loops in the Linux shell
-
-## Scan Surprise
-
-![flag](https://github.com/user-attachments/assets/1077a5c8-9b8b-434f-bf16-955f38484720)
-
-**Approach: Used Google Lens to scan the qr and found the flag.**
-
-![IMG_20241106_000018](https://github.com/user-attachments/assets/3b6fd10a-204b-4afe-8445-d86d01f7cf1a)
-
-**Flag:**
-
-```
-picoCTF{p33k_@_b00_a81f0a35}
-```
